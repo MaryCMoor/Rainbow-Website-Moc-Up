@@ -1,471 +1,549 @@
 <!DOCTYPE html>
-<!--
-Page: Assemblies Directory ("Explore Our Assemblies Across New Jersey")
-Purpose: This file contains the HTML structure for the Assemblies page.
-How to replicate in Squarespace 7.1:
-1. Header: Use Site Header settings to set background navy (#1B2A4A), add logo centered, split nav left/right, enable search, add gold CTA button "FIND AN ASSEMBLY".
-   - Left navigation: About, Assemblies, Get Involved
-   - Center: Logo (official Rainbow for Girls emblem)
-   - Right navigation: Events, Members, search icon, gold CTA button "FIND AN ASSEMBLY"
-   - Set header to "Fixed Position" (Sticky) in Site Header settings.
-2. Hero Banner: Add a Full Bleed section with background image (assembly banners). Overlay text: use a Text Block with Heading 1, serif, gold, centered.
-3. About the Assemblies Section: Add a Blank section with overview text about the assemblies (full width).
-4. Interactive Directory: Add a Blank section with a custom layout:
-   - Two-column grid layout (Fluid Engine)
-     * Left column (~60%): Custom map interface (replacing Mapme embed)
-     * Right column (~40%): Assembly cards in 2-column grid
-   - Below the two-column grid: Details panel that shows when an assembly is selected (full width)
-5. Footer: Same as global (dark slate background, white text, logo, nav links, copyright).
-6. Mobile: In Fluid Engine mobile editor, stack sections vertically:
-   - About section (full width)
-   - Map (full width)
-   - Assembly cards grid (becomes 2-column on tablet, 1-column on mobile)
-   - Details panel (full width)
--->
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Assemblies Directory – New Jersey International Order of the Rainbow for Girls</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/main.css">
-<style>
-/* Override for hero banner to reduce height */
-.hero-banner {
-  position: relative;
-  overflow: hidden;
-}
-.hero-banner img {
-  height: 50vh;
-  object-fit: cover;
-  width: 100%;
-  display: block;
-}
-.hero-banner .hero-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0,0,0,0.4);
-  color: var(--gold);
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-}
-
-/* Custom map styling */
-.custom-map {
-  position: relative;
-  height: 400px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-.custom-map-placeholder {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #666;
-}
-.custom-map-placeholder h4 {
-  margin-bottom: 0.5rem;
-}
-.custom-map-placeholder p {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-/* Assembly cards grid - 2 columns on desktop */
-.assembly-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-/* Details panel */
-.details-panel {
-  background-color: white;
-  border: 2px solid var(--gold);
-  border-radius: 8px;
-  padding: 2rem;
-  margin-top: 2rem;
-}
-.details-panel h2 {
-  color: var(--gold);
-  margin-top: 0;
-}
-.details-panel h3 {
-  color: var(--gold);
-  margin-top: 1.5rem;
-}
-.details-panel p {
-  margin-bottom: 1rem;
-  line-height: 1.5;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .assembly-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assemblies Directory – New Jersey International Order of the Rainbow for Girls</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* Hero banner height override */
+        .hero-banner {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-banner img {
+            height: 50vh;
+            object-fit: cover;
+            width: 100%;
+            display: block;
+        }
+        .hero-banner .hero-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.4);
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+        }
+        
+        /* Custom map styling */
+        .custom-map {
+            position: relative;
+            height: 400px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        .custom-map-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #666;
+        }
+        .custom-map-placeholder h4 {
+            margin-bottom: 0.5rem;
+        }
+        .custom-map-placeholder p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* About section styling */
+        .about-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        .about-section h2 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        .about-section p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem auto;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* Assembly cards grid - 2 columns on desktop */
+        .assembly-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .assembly-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .assembly-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .assembly-card.active {
+            border: 2px solid var(--gold);
+            background-color: rgba(196, 160, 82, 0.1);
+        }
+        .assembly-card-content {
+            padding: 1.5rem;
+        }
+        .assembly-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .assembly-card-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        .assembly-card-info h4 {
+            margin: 0 0 0.25rem 0;
+            color: var(--navy);
+        }
+        .assembly-card-info p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Details panel */
+        .details-panel {
+            background-color: white;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        .details-panel h2 {
+            color: var(--gold);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        .details-panel h3 {
+            color: var(--gold);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .details-panel p {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            color: #444;
+        }
+        .details-panel .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .details-panel .btn:hover {
+            background-color: #b07e3a;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .assembly-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-banner .hero-title {
+                font-size: 2rem;
+                padding: 0.75rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-content">
-    <!-- Left Navigation -->
-    <nav class="nav-left">
-      <a href="index.html">About</a>
-      <a href="assemblies.html">Assemblies</a>
-      <a href="get-involved.html">Get Involved</a>
-    </nav>
-    <!-- Centered Logo -->
-    <div class="logo-center">
-      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
-    </div>
-    <!-- Right Navigation -->
-    <nav class="nav-right">
-      <a href="events.html">Events</a>
-      <a href="member-portal.html">Members</a>
-      <button class="search-toggle" aria-label="Search">🔍</button>
-      <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
-    </nav>
-  </div>
-</header>
-
-<!-- Hero Banner -->
-<section class="hero-banner">
-  <div class="container">
-    <!-- Background image: stock photo of assemblies -->
-    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Assemblies banner">
-    <div class="hero-title">EXPLORE OUR ASSEMBLIES ACROSS NEW JERSEY</div>
-  </div>
-</section>
-
-<!-- About the Assemblies Section -->
-<section class="section">
-  <div class="container">
-    <h2 class="text-center mb-4">About Our Assemblies</h2>
-    <p class="text-center mb-4" style="max-width:800px;">
-      The International Order of the Rainbow for Girls is organized into local groups called Assemblies. Each Assembly meets regularly in their community to develop leadership, participate in service projects, and build lifelong friendships. With Assemblies throughout New Jersey, there's sure to be one near you!
-    </p>
-    <p class="text-center">
-      Each Assembly has its own unique identity, including a theme, motto, colors, and service projects. Click on any Assembly card below to learn more about that specific group.
-    </p>
-  </div>
-</section>
-
-<!-- Interactive Directory: Map + Assembly Cards -->
-<section class="section">
-  <div class="container">
-    <!-- Two-column layout: Map and Assembly Cards -->
-    <div class="grid-2" style="gap:2rem;">
-      <!-- Left Column: Custom Map -->
-      <div>
-        <h3 class="mb-2">New Jersey Assembly Map</h3>
-        <div class="custom-map">
-          <div class="custom-map-placeholder">
-            <h4>Interactive Map of NJ Assemblies</h4>
-            <p>Click on map pins to see Assembly information<br>or select an Assembly from the list to the right</p>
-          </div>
+    <header class="site-header">
+        <div class="container header-content">
+            <!-- Left Navigation -->
+            <nav class="nav-left">
+                <a href="index.html">About</a>
+                <a href="assemblies.html">Assemblies</a>
+                <a href="get-involved.html">Get Involved</a>
+            </nav>
+            <!-- Centered Logo -->
+            <div class="logo-center">
+                <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
+            </div>
+            <!-- Right Navigation -->
+            <nav class="nav-right">
+                <a href="events.html">Events</a>
+                <a href="member-portal.html">Members</a>
+                <button class="search-toggle" aria-label="Search">🔍</button>
+                <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
+            </nav>
         </div>
-      </div>
-      
-      <!-- Right Column: Assembly Cards (2-column grid) -->
-      <div>
-        <h3 class="mb-2">New Jersey Assemblies</h3>
-        <div class="assembly-grid">
-          <!-- Trenton Assembly #9 -->
-          <div class="card cursor-pointer" data-assembly="trenton9">
-            <div style="display:flex; align-items:center; gap:0.8rem;">
-              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-              <div>
-                <h4>Trenton Assembly #9</h4>
-                <p class="mb-1">Mercer County</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Clifton Assembly #16 -->
-          <div class="card cursor-pointer" data-assembly="clifton16">
-            <div style="display:flex; align-items:center; gap:0.8rem;">
-              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-              <div>
-                <h4>Clifton Assembly #16</h4>
-                <p class="mb-1">Passaic County</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Mistletoe Assembly #20 -->
-          <div class="card cursor-pointer" data-assembly="mistletoe20">
-            <div style="display:flex; align-items:center; gap:0.8rem;">
-              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-              <div>
-                <h4>Mistletoe Assembly #20</h4>
-                <p class="mb-1">Bergen County</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Iris Assembly #31 -->
-          <div class="card cursor-pointer" data-assembly="iris31">
-            <div style="display:flex; align-items:center; gap:0.8rem;">
-              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-              <div>
-                <h4>Iris Assembly #31</h4>
-                <p class="mb-1">Monmouth County</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Temple Assembly #32 -->
-          <div class="card cursor-pointer" data-assembly="temple32">
-            <div style="display:flex; align-items:center; gap:0.8rem;">
-              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-              <div>
-                <h4>Temple Assembly #32</h4>
-                <p class="mb-1">Bergen County</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Golden Assembly #43 -->
-          <div class="card cursor-pointer" data-assembly="golden43">
-            <div style="display:flex; align-items:center; gap:0.8rem;">
-              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-              <div>
-                <h4>Golden Assembly #43</h4>
-                <p class="mb-1">Middlesex County</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Holly Assembly #56 -->
-          <div class="card cursor-pointer" data-assembly="holly56">
-            <div style="display:flex; align-items:center; gap:0.8rem;">
-              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-              <div>
-                <h4>Holly Assembly #56</h4>
-                <p class="mb-1">Ocean County</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Delaware Valley Assembly #65 -->
-          <div class="card cursor-pointer" data-assembly="delval65">
-            <div style="display:flex; align-items:center; gap:0.8rem;">
-              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-              <div>
-                <h4>Delaware Valley Assembly #65</h4>
-                <p class="mb-1">Burlington County</p>
-              </div>
-            </div>
-          </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="container">
+            <!-- Background image: stock photo of assemblies -->
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Assemblies banner">
+            <div class="hero-title">EXPLORE OUR ASSEMBLIES ACROSS NEW JERSEY</div>
         </div>
-      </div>
-    </div>
-    
-    <!-- Details Panel (full width below) -->
-    <div class="details-panel" id="assemblyDetails">
-      <h2 id="detailsTitle">Select an Assembly to View Details</h2>
-      <p id="detailsContent">
-        Click on any Assembly card above to see detailed information including theme, motto, meeting information, service projects, and contact details.
-      </p>
-      <div class="text-center mt-4">
-        <a href="#" class="btn">JOIN THE JOURNEY</a>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer class="site-footer">
-  <div class="container footer-content">
-    <div>
-      <div class="footer-logo">🌈 NJ Rainbow Girls</div>
-      <p class="tagline">Rainbow Gets Girls Ready for Life!</p>
-    </div>
-    <nav>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="assemblies.html">Assemblies</a></li>
-        <li><a href="get-involved.html">Get Involved</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="member-portal.html">Members</a></li>
-      </ul>
-    </nav>
-    <div>
-      <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+    <!-- About the Assemblies Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2>About Our Assemblies</h2>
+            <p>
+                The International Order of the Rainbow for Girls is organized into local groups called Assemblies. 
+                Each Assembly meets regularly in their community to develop leadership, participate in service projects, 
+                and build lifelong friendships. With Assemblies throughout New Jersey, there's sure to be one near you!
+            </p>
+            <p>
+                Each Assembly has its own unique identity, including a theme, motto, colors, and service projects. 
+                Click on any Assembly card below to learn more about that specific group.
+            </p>
+        </div>
+    </section>
 
-<script>
-// JavaScript for interactive assembly details
-document.addEventListener('DOMContentLoaded', function() {
-  const assemblyCards = document.querySelectorAll('.card');
-  const detailsTitle = document.getElementById('detailsTitle');
-  const detailsContent = document.getElementById('detailsContent');
-  
-  // Assembly data
-  const assemblyData = {
-    trenton9: {
-      title: "Trenton Assembly #9",
-      content: `
-        <h3>Theme: Theater</h3>
-        <p><strong>Motto:</strong> Theater is empathy in action</p>
-        <p><strong>Colors:</strong> Red & Gold</p>
-        <p><strong>Mascots:</strong> Comedy & Tragedy Masks</p>
-        <p><strong>Flower:</strong> Red Rose</p>
-        <p><strong>Bible Verse:</strong> Ephesians 5:19</p>
-        <p><strong>Charity:</strong> Graves Disease & Thyroid Foundation</p>
-        <p><strong>Meeting Term:</strong> May - September 2026</p>
-        <h3>Officers</h3>
-        <p><strong>Worthy Advisor:</strong> Laura E.</p>
-        <p><strong>Worthy Associate Advisor:</strong> Dominque J.</p>
-        <p><strong>Charity:</strong> Valerie C.B.</p>
-        <p><strong>Hope:</strong> Reagan S.</p>
-        <p><strong>Faith:</strong> Jailah A.</p>
-        <p><strong>Recorder:</strong> [Position Open]</p>
-        <p><strong>Treasurer:</strong> [Position Open]</p
-      `
-    },
-    clifton16: {
-      title: "Clifton Assembly #16",
-      content: `
-        <h3>Assembly Information</h3>
-        <p>We are in the process of reorganizing our assembly</p>
-        <p><strong>Meeting Term:</strong> May - September 2026</p>
-        <h3>Theme: Unity Through Rainbow</h3>
-        <p><strong>Motto:</strong> Alone we do so little, together we do so much</p>
-        <p><strong>Colors:</strong> Red, Orange, Yellow, Green, Blue, Indigo, Violet</p>
-        <p><strong>Symbol:</strong> Rainbow</p>
-        <p><strong>Charity:</strong> Shriner’s Children’s Hospital</p>
-        <h3>Officers</h3>
-        <p><strong>Worthy Advisor:</strong> [Position Open]</p>
-        <p><strong>Worthy Associate Advisor:</strong> Mikayla P.</p>
-        <p><strong>Charity (pro tem):</strong> Amaya N.</p>
-        <p><strong>Hope:</strong> Kaylee D.</p>
-        <p><strong>Faith:</strong> Lyla P.</p>
-        <p><strong>Recorder:</strong> [Position Open]</p>
-        <p><strong>Treasurer:</strong> [Position Open]</p
-      `
-    },
-    mistletoe20: {
-      title: "Mistletoe Assembly #20",
-      content: `
-        <h3>Assembly Information</h3>
-        <p>We are in the process of reorganizing our assembly</p>
-        <p><strong>Meeting Term:</strong> May - September 2026</p>
-        <h3>Theme: [Information Coming Soon]</h3>
-        <p><strong>Motto:</strong> [Information Coming Soon]</p>
-        <p><strong>Colors:</strong> [Information Coming Soon]</p>
-        <p><strong>Symbol:</strong> [Information Coming Soon]</p>
-        <p><strong>Charity:</strong> [Information Coming Soon]</p>
-        <h3>Officers</h3>
-        <p><strong>Worthy Advisor:</strong> [Position Open]</p>
-        <p><strong>Worthy Associate Advisor:</strong> [Position Open]</p>
-        <p><strong>Charity:</strong> [Position Open]</p>
-        <p><strong>Hope:</strong> [Position Open]</p>
-        <p><strong>Faith:</strong> [Position Open]</p
-      `
-    },
-    iris31: {
-      title: "Iris Assembly #31",
-      content: `
-        <h3>Theme: You’re a Beautiful Butterfly</h3>
-        <p><strong>Motto:</strong> “You do not just wake up and become the butterfly. Growth is a process.” - Rupi Kaur</p>
-        <p><strong>Colors:</strong> Baby Blue & Sage Green</p>
-        <p><strong>Symbols:</strong> Wings</p>
-        <p><strong>Mascot:</strong> Butterflies</p>
-        <p><strong>Flower:</strong> Yellow & Pink Roses</p>
-        <p><strong>Charity:</strong> Children’s Dyslexia Center</p>
-        <h3>Officers</h3>
-        <p><strong>Worthy Advisor:</strong> Ariana B.V.</p>
-        <p><strong>Worthy Associate Advisor:</strong> Dahlia P.</p>
-        <p><strong>Charity:</strong> Meadow P.</p>
-        <p><strong>Hope:</strong> Madison C.P.</p>
-        <p><strong>Faith:</strong> Grace C.P.</p
-      `
-    },
-    temple32: {
-      title: "Temple Assembly #32",
-      content: `
-        <h3>Assembly Term: September 2025 - January 2026</h3>
-        <p><strong>Motto:</strong> “The Start of a New Chapter”</p>
-        <p><strong>Symbols:</strong> Books & Crafts</p>
-        <p><strong>Colors:</strong> Red, Yellow, Violet</p>
-        <p><strong>Song:</strong> “What It Sounds Like” by HUNTR/X</p
-      `
-    },
-    golden43: {
-      title: "Golden Assembly #43",
-      content: `
-        <h3>Assembly Information</h3>
-        <p><strong>Meeting Term:</strong> [Information Coming Soon]</p>
-        <h3>Theme: [Information Coming Soon]</h3>
-        <p><strong>Motto:</strong> [Information Coming Soon]</p>
-        <p><strong>Colors:</strong> [Information Coming Soon]</p>
-        <p><strong>Flower:</strong> [Information Coming Soon]</p
-      `
-    },
-    holly56: {
-      title: "Holly Assembly #56",
-      content: `
-        <h3>Assembly Term</h3>
-        <p><strong>Motto:</strong> “Go live your dream”</p>
-        <p><strong>Symbol:</strong> Pascal</p>
-        <p><strong>Colors:</strong> Purple & Yellow</p>
-        <p><strong>Bible Verse:</strong> Psalm 37:4</p>
-        <p><strong>Flower:</strong> Narrow-leaved Sundrop</p
-      `
-    },
-    delval65: {
-      title: "Delaware Valley Assembly #65",
-      content: `
-        <h3>Assembly Term</h3>
-        <p><strong>Theme:</strong> Moana</p>
-        <p><strong>Motto:</strong> “Be True to Yourself and Follow Your Dreams”</p>
-        <p><strong>Symbol:</strong> Seashell</p
-      `
-    }
-  };
-  
-  // Add click event listeners to assembly cards
-  assemblyCards.forEach(card => {
-    card.addEventListener('click', function() {
-      const assemblyId = this.getAttribute('data-assembly');
-      const assembly = assemblyData[assemblyId];
-      
-      if (assembly) {
-        detailsTitle.textContent = assembly.title;
-        detailsContent.innerHTML = assembly.content;
-        
-        // Remove active class from all cards and add to clicked one
-        assemblyCards.forEach(c => c.classList.remove('active'));
-        this.classList.add('active');
-      }
-    });
-  });
-  
-  // Add CSS for active state
-  const style = document.createElement('style');
-  style.textContent = `
-    .card.active {
-      border: 2px solid var(--gold);
-      background-color: rgba(196, 160, 82, 0.1);
-    }
-    .cursor-pointer {
-      cursor: pointer;
-    }
-  `;
-  document.head.appendChild(style);
-});
-</script>
+    <!-- Interactive Directory: Map + Assembly Cards -->
+    <section class="section">
+        <div class="container">
+            <!-- Two-column layout: Map and Assembly Cards -->
+            <div class="grid-2" style="gap:2rem;">
+                <!-- Left Column: Custom Map -->
+                <div>
+                    <h3 class="mb-2">New Jersey Assembly Map</h3>
+                    <div class="custom-map">
+                        <div class="custom-map-placeholder">
+                            <h4>Interactive Map of NJ Assemblies</h4>
+                            <p>Click on map pins to see Assembly information<br>or select an Assembly from the list to the right</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Assembly Cards (2-column grid) -->
+                <div>
+                    <h3 class="mb-2">New Jersey Assemblies</h3>
+                    <div class="assembly-grid">
+                        <!-- Trenton Assembly #9 -->
+                        <div class="assembly-card" data-assembly="trenton9">
+                            <div class="assembly-card-content">
+                                <div class="assembly-card-header">
+                                    <div class="assembly-card-icon">NJ</div>
+                                    <div class="assembly-card-info">
+                                        <h4>Trenton Assembly #9</h4>
+                                        <p>Mercer County</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Clifton Assembly #16 -->
+                        <div class="assembly-card" data-assembly="clifton16">
+                            <div class="assembly-card-content">
+                                <div class="assembly-card-header">
+                                    <div class="assembly-card-icon">NJ</div>
+                                    <div class="assembly-card-info">
+                                        <h4>Clifton Assembly #16</h4>
+                                        <p>Passaic County</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Mistletoe Assembly #20 -->
+                        <div class="assembly-card" data-assembly="mistletoe20">
+                            <div class="assembly-card-content">
+                                <div class="assembly-card-header">
+                                    <div class="assembly-card-icon">NJ</div>
+                                    <div class="assembly-card-info">
+                                        <h4>Mistletoe Assembly #20</h4>
+                                        <p>Bergen County</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Iris Assembly #31 -->
+                        <div class="assembly-card" data-assembly="iris31">
+                            <div class="assembly-card-content">
+                                <div class="assembly-card-header">
+                                    <div class="assembly-card-icon">NJ</div>
+                                    <div class="assembly-card-info">
+                                        <h4>Iris Assembly #31</h4>
+                                        <p>Monmouth County</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Temple Assembly #32 -->
+                        <div class="assembly-card" data-assembly="temple32">
+                            <div class="assembly-card-content">
+                                <div class="assembly-card-header">
+                                    <div class="assembly-card-icon">NJ</div>
+                                    <div class="assembly-card-info">
+                                        <h4>Temple Assembly #32</h4>
+                                        <p>Bergen County</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Golden Assembly #43 -->
+                        <div class="assembly-card" data-assembly="golden43">
+                            <div class="assembly-card-content">
+                                <div class="assembly-card-header">
+                                    <div class="assembly-card-icon">NJ</div>
+                                    <div class="assembly-card-info">
+                                        <h4>Golden Assembly #43</h4>
+                                        <p>Middlesex County</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Holly Assembly #56 -->
+                        <div class="assembly-card" data-assembly="holly56">
+                            <div class="assembly-card-content">
+                                <div class="assembly-card-header">
+                                    <div class="assembly-card-icon">NJ</div>
+                                    <div class="assembly-card-info">
+                                        <h4>Holly Assembly #56</h4>
+                                        <p>Ocean County</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Delaware Valley Assembly #65 -->
+                        <div class="assembly-card" data-assembly="delval65">
+                            <div class="assembly-card-content">
+                                <div class="assembly-card-header">
+                                    <div class="assembly-card-icon">NJ</div>
+                                    <div class="assembly-card-info">
+                                        <h4>Delaware Valley Assembly #65</h4>
+                                        <p>Burlington County</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Details Panel (full width below) -->
+            <div class="details-panel" id="assemblyDetails">
+                <h2 id="detailsTitle">Select an Assembly to View Details</h2>
+                <p id="detailsContent">
+                    Click on any Assembly card above to see detailed information including theme, motto, meeting information, service projects, and contact details.
+                </p>
+                <div class="text-center mt-4">
+                    <a href="#" class="btn">JOIN THE JOURNEY</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div>
+                <div class="footer-logo">🌈 NJ Rainbow Girls</div>
+                <p class="tagline">Rainbow Gets Girls Ready for Life!</p>
+            </div>
+            <nav>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="assemblies.html">Assemblies</a></li>
+                    <li><a href="get-involved.html">Get Involved</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="member-portal.html">Members</a></li>
+                </ul>
+            </nav>
+            <div>
+                <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for interactive assembly details
+        document.addEventListener('DOMContentLoaded', function() {
+            const assemblyCards = document.querySelectorAll('.assembly-card');
+            const detailsTitle = document.getElementById('detailsTitle');
+            const detailsContent = document.getElementById('detailsContent');
+            
+            // Assembly data
+            const assemblyData = {
+                trenton9: {
+                    title: "Trenton Assembly #9",
+                    content: `
+                        <h3>Theme: Theater</h3>
+                        <p><strong>Motto:</strong> Theater is empathy in action</p>
+                        <p><strong>Colors:</strong> Red & Gold</p>
+                        <p><strong>Mascots:</strong> Comedy & Tragedy Masks</p>
+                        <p><strong>Flower:</strong> Red Rose</p>
+                        <p><strong>Bible Verse:</strong> Ephesians 5:19</p>
+                        <p><strong>Charity:</strong> Graves Disease & Thyroid Foundation</p>
+                        <p><strong>Meeting Term:</strong> May - September 2026</p>
+                        <h3>Officers</h3>
+                        <p><strong>Worthy Advisor:</strong> Laura E.</p>
+                        <p><strong>Worthy Associate Advisor:</strong> Dominque J.</p>
+                        <p><strong>Charity:</strong> Valerie C.B.</p>
+                        <p><strong>Hope:</strong> Reagan S.</p>
+                        <p><strong>Faith:</strong> Jailah A.</p>
+                        <p><strong>Recorder:</strong> [Position Open]</p>
+                        <p><strong>Treasurer:</strong> [Position Open]</p>
+                    `
+                },
+                clifton16: {
+                    title: "Clifton Assembly #16",
+                    content: `
+                        <h3>Assembly Information</h3>
+                        <p>We are in the process of reorganizing our assembly</p>
+                        <p><strong>Meeting Term:</strong> May - September 2026</p>
+                        <h3>Theme: Unity Through Rainbow</h3>
+                        <p><strong>Motto:</strong> Alone we do so little, together we do so much</p>
+                        <p><strong>Colors:</strong> Red, Orange, Yellow, Green, Blue, Indigo, Violet</p>
+                        <p><strong>Symbol:</strong> Rainbow</p>
+                        <p><strong>Charity:</strong> Shriner’s Children’s Hospital</p>
+                        <h3>Officers</h3>
+                        <p><strong>Worthy Advisor:</strong> [Position Open]</p>
+                        <p><strong>Worthy Associate Advisor:</strong> Mikayla P.</p>
+                        <p><strong>Charity (pro tem):</strong> Amaya N.</p>
+                        <p><strong>Hope:</strong> Kaylee D.</p>
+                        <p><strong>Faith:</strong> Lyla P.</p>
+                        <p><strong>Recorder:</strong> [Position Open]</p>
+                        <p><strong>Treasurer:</strong> [Position Open]</p>
+                    `
+                },
+                mistletoe20: {
+                    title: "Mistletoe Assembly #20",
+                    content: `
+                        <h3>Assembly Information</h3>
+                        <p>We are in the process of reorganizing our assembly</p>
+                        <p><strong>Meeting Term:</strong> May - September 2026</p>
+                        <h3>Theme: [Information Coming Soon]</h3>
+                        <p><strong>Motto:</strong> [Information Coming Soon]</p>
+                        <p><strong>Colors:</strong> [Information Coming Soon]</p>
+                        <p><strong>Symbol:</strong> [Information Coming Soon]</p>
+                        <p><strong>Charity:</strong> [Information Coming Soon]</p>
+                        <h3>Officers</h3>
+                        <p><strong>Worthy Advisor:</strong> [Position Open]</p>
+                        <p><strong>Worthy Associate Advisor:</strong> [Position Open]</p>
+                        <p><strong>Charity:</strong> [Position Open]</p>
+                        <p><strong>Hope:</strong> [Position Open]</p>
+                        <p><strong>Faith:</strong> [Position Open]</p>
+                    `
+                },
+                iris31: {
+                    title: "Iris Assembly #31",
+                    content: `
+                        <h3>Theme: You’re a Beautiful Butterfly</h3>
+                        <p><strong>Motto:</strong> “You do not just wake up and become the butterfly. Growth is a process.” - Rupi Kaur</p>
+                        <p><strong>Colors:</strong> Baby Blue & Sage Green</p>
+                        <p><strong>Symbols:</strong> Wings</p>
+                        <p><strong>Mascot:</strong> Butterflies</p>
+                        <p><strong>Flower:</strong> Yellow & Pink Roses</p>
+                        <p><strong>Charity:</strong> Children’s Dyslexia Center</p>
+                        <h3>Officers</h3>
+                        <p><strong>Worthy Advisor:</strong> Ariana B.V.</p>
+                        <p><strong>Worthy Associate Advisor:</strong> Dahlia P.</p>
+                        <p><strong>Charity:</strong> Meadow P.</p>
+                        <p><strong>Hope:</strong> Madison C.P.</p>
+                        <p><strong>Faith:</strong> Grace C.P.</p>
+                    `
+                },
+                temple32: {
+                    title: "Temple Assembly #32",
+                    content: `
+                        <h3>Assembly Term: September 2025 - January 2026</h3>
+                        <p><strong>Motto:</strong> “The Start of a New Chapter”</p>
+                        <p><strong>Symbols:</strong> Books & Crafts</p>
+                        <p><strong>Colors:</strong> Red, Yellow, Violet</p>
+                        <p><strong>Song:</strong> “What It Sounds Like” by HUNTR/X</p>
+                    `
+                },
+                golden43: {
+                    title: "Golden Assembly #43",
+                    content: `
+                        <h3>Assembly Information</h3>
+                        <p><strong>Meeting Term:</strong> [Information Coming Soon]</p>
+                        <h3>Theme: [Information Coming Soon]</h3>
+                        <p><strong>Motto:</strong> [Information Coming Soon]</p>
+                        <p><strong>Colors:</strong> [Information Coming Soon]</p>
+                        <p><strong>Flower:</strong> [Information Coming Soon]</p>
+                    `
+                },
+                holly56: {
+                    title: "Holly Assembly #56",
+                    content: `
+                        <h3>Assembly Term</h3>
+                        <p><strong>Motto:</strong> “Go live your dream”</p>
+                        <p><strong>Symbol:</strong> Pascal</p>
+                        <p><strong>Colors:</strong> Purple & Yellow</p>
+                        <p><strong>Bible Verse:</strong> Psalm 37:4</p>
+                        <p><strong>Flower:</strong> Narrow-leaved Sundrop</p>
+                    `
+                },
+                delval65: {
+                    title: "Delaware Valley Assembly #65",
+                    content: `
+                        <h3>Assembly Term</h3>
+                        <p><strong>Theme:</strong> Moana</p>
+                        <p><strong>Motto:</strong> “Be True to Yourself and Follow Your Dreams”</p>
+                        <p><strong>Symbol:</strong> Seashell</p>
+                    `
+                }
+            };
+            
+            // Add click event listeners to assembly cards
+            assemblyCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const assemblyId = this.getAttribute('data-assembly');
+                    const assembly = assemblyData[assemblyId];
+                    
+                    if (assembly) {
+                        detailsTitle.textContent = assembly.title;
+                        detailsContent.innerHTML = assembly.content;
+                        
+                        // Remove active class from all cards and add to clicked one
+                        assemblyCards.forEach(c => c.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Add CSS for active state
+            const style = document.createElement('style');
+            style.textContent = `
+                .assembly-card.active {
+                    border: 2px solid var(--gold);
+                    background-color: rgba(196, 160, 82, 0.1);
+                }
+                .cursor-pointer {
+                    cursor: pointer;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
 </body>
 </html>

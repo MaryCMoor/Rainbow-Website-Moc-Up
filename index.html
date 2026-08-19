@@ -1,187 +1,258 @@
 <!DOCTYPE html>
-<!--
-Page: Home ("Our Foundation & Commitment")
-Purpose: This file contains the HTML structure for the Home page of the NJ Rainbow Girls website.
-How to replicate in Squarespace 7.1:
-1. Header: Use Site Header settings to set background navy (#1B2A4A), add logo centered, split nav left/right, enable search, add gold CTA button "FIND AN ASSEMBLY".
-   - Left navigation: About, Assemblies, Get Involved
-   - Center: Logo (official Rainbow for Girls emblem)
-   - Right navigation: Events, Members, search icon, gold CTA button "FIND AN ASSEMBLY"
-   - Set header to "Fixed Position" (Sticky) in Site Header settings.
-2. Hero Banner: Add a Full Bleed section with background image (group photo). Overlay text: use a Text Block with Heading 1, serif font, gold color (#C4A052), centered. Enable a subtle darkened overlay (optional) for readability.
-3. Section 1 ("Who We Are"): Add a Blank section with 2-column layout (Grid). Left column: Text Blocks for narrative. Right column: Image Block for featured image.
-4. Section 2 ("Core Values"): Add a Blank section with 4-column grid (equal columns). Each column: Shape Block (white background) containing Image Block (icon), Text Block (heading), Text Block (description). Use spacers for consistent padding.
-5. Footer: Use Site Footer with dark slate background (#1A252F), white text, logo, navigation links, copyright.
--->
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>New Jersey International Order of the Rainbow for Girls – Home</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/main.css">
-<style>
-/* Override for hero banner to reduce height */
-.hero-banner {
-  position: relative;
-  overflow: hidden;
-}
-.hero-banner img {
-  height: 50vh;
-  object-fit: cover;
-  width: 100%;
-  display: block;
-}
-.hero-banner .hero-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0,0,0,0.4);
-  color: var(--gold);
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home – New Jersey International Order of the Rainbow for Girls</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* Hero banner height override */
+        .hero-banner {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-banner img {
+            height: 50vh;
+            object-fit: cover;
+            width: 100%;
+            display: block;
+        }
+        .hero-banner .hero-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.4);
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+        }
+        
+        /* Section styling */
+        .section {
+            padding: 3rem 0;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        /* Who We Are section */
+        .who-we-are {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        .who-we-are-text h2 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .who-we-are-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: #444;
+        }
+        .who-we-are-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+        .who-we-are-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Core Values section */
+        .core-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .value-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .value-card h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .value-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .who-we-are {
+                grid-template-columns: 1fr;
+            }
+            .hero-banner .hero-title {
+                font-size: 2rem;
+                padding: 0.75rem 1.5rem;
+            }
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-content">
-    <!-- Left Navigation -->
-    <nav class="nav-left">
-      <a href="index.html">About</a>
-      <a href="assemblies.html">Assemblies</a>
-      <a href="get-involved.html">Get Involved</a>
-    </nav>
-    <!-- Centered Logo -->
-    <div class="logo-center">
-      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
-    </div>
-    <!-- Right Navigation -->
-    <nav class="nav-right">
-      <a href="events.html">Events</a>
-      <a href="member-portal.html">Members</a>
-      <button class="search-toggle" aria-label="Search">🔍</button>
-      <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
-    </nav>
-  </div>
-</header>
+    <header class="site-header">
+        <div class="container header-content">
+            <!-- Left Navigation -->
+            <nav class="nav-left">
+                <a href="index.html">About</a>
+                <a href="assemblies.html">Assemblies</a>
+                <a href="get-involved.html">Get Involved</a>
+            </nav>
+            <!-- Centered Logo -->
+            <div class="logo-center">
+                <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
+            </div>
+            <!-- Right Navigation -->
+            <nav class="nav-right">
+                <a href="events.html">Events</a>
+                <a href="member-portal.html">Members</a>
+                <button class="search-toggle" aria-label="Search">🔍</button>
+                <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
+            </nav>
+        </div>
+    </header>
 
-<!-- Hero Banner -->
-<section class="hero-banner">
-  <div class="container">
-    <!-- Background image: stock photo of girls group -->
-    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Group photo of Rainbow Girls">
-    <div class="hero-title">OUR FOUNDATION & COMMITMENT</div>
-  </div>
-</section>
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="container">
+            <!-- Background image: stock photo of group -->
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Group banner">
+            <div class="hero-title">OUR FOUNDATION & COMMITMENT</div>
+        </div>
+    </section>
 
-<!-- Who We Are Section -->
-<section class="section">
-  <div class="container">
-    <h2 class="text-center mb-4">Who We Are</h2>
-    <div class="grid-2">
-      <!-- Left Column: Narrative -->
-      <div>
-        <p><strong>Rainbow Gets Girls Ready for Life!</strong></p>
-        
-        <div class="leadership-info mb-3">
-          <p><strong>Miss Kathleen Nase</strong><br>
-          Supreme Inspector<br>
-          Supreme Patriotism 2020-2022</p>
-          <p><strong>Miss Kathleen Nase</strong><br>
-          Supreme Inspector<br>
-          Supreme Religion 2026-2028</p>
-          <p><strong>Valerie Cordero-Beckert</strong><br>
-          Grand Worthy Advisor<br>
-          2026-2027</p>
+    <!-- Who We Are Section -->
+    <section class="section who-we-are">
+        <div class="container">
+            <div class="who-we-are-text">
+                <h2>Who We Are</h2>
+                <p>
+                    The International Order of the Rainbow for Girls is a nonprofit youth organization that teaches girls what matters most – leadership, confidence, and citizenship. 
+                    Every day, across the globe, hundreds of thousands of girls come together to laugh, share, and grow through fun events and challenging workshops designed to empower girls of all ages.
+                </p>
+                <p>
+                    Rainbow Girls volunteer for their community and travel to other clubs. Along the way, they make new friends and gather invaluable life skills that help them become the best daughter, sister, and friend they can be. 
+                    Whether their dream is to become the CEO of their own company, a talented artist, or a loving mother, Rainbow Girls learn that they can accomplish anything, and in the process, they can make a difference in this world.
+                </p>
+                <div class="mt-4">
+                    <p><strong>Supreme Inspector:</strong> Miss Kathleen Nase</p>
+                    <p><strong>Supreme Patriotism 2020-2022:</strong> Miss Kathleen Nase</p>
+                    <p><strong>Supreme Religion 2026-2028:</strong> Miss Kathleen Nase</p>
+                    <p><strong>Grand Worthy Advisor 2026-2027:</strong> Valerie Cordero-Beckert</p>
+                </div>
+            </div>
+            <div class="who-we-are-image">
+                <img src="https://images.unsplash.com/photo-1527980971150-8c7c65f4e0f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Rainbow Girls">
+            </div>
         </div>
-        
-        <p>The Grand Assembly of New Jersey is a proud member of the International Order of the Rainbow for Girls – a non-profit youth group that teaches girls what matters most – leadership, confidence, and citizenship. Every day, across the globe, hundreds of thousands of girls come together to laugh, share, and grow through fun events and challenging workshops designed to empower girls of all ages. Rainbow Girls volunteer for their community and travel to other clubs. Along the way, they make new friends and gather invaluable life skills that help them become the best daughter, sister, and friend they can be.</p>
-        
-        <p>Whether their dream is to become the CEO of their own company, a talented artist, or a loving mother, Rainbow Girls learn that they can accomplish anything, and in the process, they can make a difference in this world.</p>
-      </div>
-      
-      <!-- Right Column: Featured Image -->
-      <div>
-        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Rainbow Girls in action" class="featured-image">
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Core Values Section -->
-<section class="section">
-  <div class="container">
-    <h2 class="text-center mb-4">Our Core Values</h2>
-    <div class="grid-4">
-      <!-- Leadership -->
-      <div class="card">
-        <div style="text-align:center;">
-          <div style="width:60px;height:60px;background-color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
-            <span style="color:var(--white);font-weight:bold;">L</span>
-          </div>
+    <!-- Core Values Section -->
+    <section class="section core-values" style="background-color: var(--cream);">
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="core-values-grid">
+                <!-- Leadership Card -->
+                <div class="value-card">
+                    <div class="value-icon">👑</div>
+                    <h3>Leadership</h3>
+                    <p>
+                        We develop confident leaders who know how to inspire others, make difficult decisions, and create positive change in their communities and beyond.
+                    </p>
+                </div>
+                
+                <!-- Service Card -->
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Service</h3>
+                    <p>
+                        We put our faith into action by serving others, volunteering in our communities, and learning the joy of helping those in need.
+                    </p>
+                </div>
+                
+                <!-- Friendship Card -->
+                <div class="value-card">
+                    <div class="value-icon">💖</div>
+                    <h3>Friendship</h3>
+                    <p>
+                        We build lifelong friendships that span generations, creating a sisterhood of support, encouragement, and shared experiences.
+                    </p>
+                </div>
+                
+                <!-- Faith/Hope/Charity Card -->
+                <div class="value-card">
+                    <div class="value-icon">✨</div>
+                    <h3>Faith • Hope • Charity</h3>
+                    <p>
+                        We nurture spiritual growth, maintain optimism in challenging times, and practice generosity of time, talent, and treasure to make the world a better place.
+                    </p>
+                </div>
+            </div>
         </div>
-        <h3 class="text-center">Leadership</h3>
-        <p>Developing the courage and skills to guide others with integrity and vision.</p>
-      </div>
-      
-      <!-- Service -->
-      <div class="card">
-        <div style="text-align:center;">
-          <div style="width:60px;height:60px;background-color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
-            <span style="color:var(--white);font-weight:bold;">S</span>
-          </div>
-        </div>
-        <h3 class="text-center">Service</h3>
-        <p>Learning the joy of helping others and making a positive impact in our communities.</p>
-      </div>
-      
-      <!-- Friendship -->
-      <div class="card">
-        <div style="text-align:center;">
-          <div style="width:60px;height:60px;background-color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
-            <span style="color:var(--white);font-weight:bold;">F</span>
-          </div>
-        </div>
-        <h3 class="text-center">Friendship</h3>
-        <p>Building lifelong bonds of sisterhood, trust, and mutual support.</p>
-      </div>
-      
-      <!-- Faith, Hope, & Charity -->
-      <div class="card">
-        <div style="text-align:center;">
-          <div style="width:60px;height:60px;background-color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
-            <span style="color:var(--white);font-weight:bold;">FHC</span>
-          </div>
-        </div>
-        <h3 class="text-center">Faith, Hope, & Charity</h3>
-        <p>Growing in spiritual understanding, optimistic outlook, and generous giving to those in need.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer class="site-footer">
-  <div class="container footer-content">
-    <div>
-      <div class="footer-logo">🌈 NJ Rainbow Girls</div>
-      <p class="tagline">Rainbow Gets Girls Ready for Life!</p>
-    </div>
-    <nav>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="assemblies.html">Assemblies</a></li>
-        <li><a href="get-involved.html">Get Involved</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="member-portal.html">Members</a></li>
-      </ul>
-    </nav>
-    <div>
-      <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div>
+                <div class="footer-logo">🌈 NJ Rainbow Girls</div>
+                <p class="tagline">Rainbow Gets Girls Ready for Life!</p>
+            </div>
+            <nav>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="assemblies.html">Assemblies</a></li>
+                    <li><a href="get-involved.html">Get Involved</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="member-portal.html">Members</a></li>
+                </ul>
+            </nav>
+            <div>
+                <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
