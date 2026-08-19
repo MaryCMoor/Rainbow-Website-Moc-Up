@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NJ Organization – Design Mockup</title>
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --gold: #C4A052;
+    --cream: #FDFBF7;
+    --white: #FFFFFF;
+    --gray: #333333;
+  }
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; background:#fafafa; color:var(--gray); }
+  a { text-decoration:none; color:inherit; }
+  /* Header */
+  .site-header {
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--navy); padding:1rem 5%; color:var(--white);
+    position:sticky; top:0; z-index:1000;
+  }
+  .logo { font-size:1.5rem; font-weight:bold; }
+  .nav-left, .nav-right { display:flex; gap:1.5rem; }
+  .nav-left a, .nav-right a { color:var(--white); font-size:0.95rem; }
+  .nav-right .cta-btn {
+    background:var(--gold); color:var(--white); padding:0.5rem 1rem;
+    border-radius:4px; font-weight:600;
+  }
+  .search-toggle { background:none; border:none; color:var(--white); font-size:1.2rem; cursor:pointer; margin-left:1rem; }
+  /* Hero */
+  .hero {
+    position:relative; height:80vh; background:url('https://source.unsplash.com/random/1600x900?assembly,group') center/cover no-repeat;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    color:var(--white);
+  }
+  .hero::after {
+    content:""; position:absolute; inset:0; background:rgba(0,0,0,0.4);
+  }
+  .hero-content { position:relative; z-index:2; }
+  .hero h1 { font-family:'Playfair Display', serif; font-size:3.2rem; color:var(--gold); }
+  /* Section */
+  .section { background:var(--cream); padding:4rem 5%; }
+  .grid-3 {
+    display:grid; grid-template-columns:35% 30% 35%; gap:2rem; align-items:start;
+  }
+  @media (max-width:768px) {
+    .grid-3 { grid-template-columns:1fr; }
+  }
+  /* Column 1 – Map */
+  .map-col iframe { width:100%; height:500px; border:none; }
+  /* Column 2 – Cards */
+  .cards-col { display:flex; flex-direction:column; gap:1.5rem; }
+  .card {
+    background:var(--white); border-radius:8px; padding:1.5rem; box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    display:flex; align-items:flex-start; gap:1rem;
+  }
+  .card img { width:48px; height:48px; object-fit:contain; }
+  .card-info h3 { margin:0 0 .3rem 0; font-size:1.2rem; color:var(--navy); }
+  .card-info p { margin:0 0 .8rem 0; font-size:0.9rem; color:var(--gray); }
+  .card .btn {
+    background:var(--gold); color:var(--white); padding:.4rem .8rem; border-radius:4px; font-size:.9rem;
+    align-self:flex-start;
+  }
+  /* Column 3 – Details Panel */
+  .details-col {
+    background:var(--white); border:2px solid var(--gold); border-radius:8px; padding:2rem;
+  }
+  .details-col h2 { margin:0 0 .8rem 0; font-size:1.8rem; color:var(--gold); }
+  .details-col h3 { margin:1.2rem 0 .4rem 0; font-size:1.1rem; color:var(--gold); }
+  .details-col p { margin:0 0 1rem 0; line-height:1.5; color:var(--gray); }
+  .details-col .btn-jo {
+    display:inline-block; background:var(--gold); color:var(--white); padding:.6rem 1.2rem;
+    border-radius:4px; font-weight:600; margin-top:1rem;
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">NJ Org</div>
+  <nav class="nav-left">
+    <a href="#">About</a>
+    <a href="#">Assemblies</a>
+  </nav>
+  <nav class="nav-right">
+    <a href="#">Get Involved</a>
+    <a href="#">Events</a>
+    <a href="#">Members</a>
+    <button class="search-toggle">🔍</button>
+    <a href="#" class="cta-btn">FIND AN ASSEMBLY</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>EXPLORE OUR ASSEMBLIES ACROSS NEW JERSEY</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="grid-3">
+    <!-- Column 1: Map -->
+    <div class="map-col">
+      <iframe src="https://viewer.mapme.com/17d68550-7d54-4e70-819b-ab59aa4b1aad"
+              width="100%" height="500" style="border:none;"></iframe>
+    </div>
+
+    <!-- Column 2: Assembly Cards -->
+    <div class="cards-col">
+      <div class="card">
+        <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon">
+        <div class="card-info">
+          <h3>Assembly One</h3>
+          <p>Location: Trenton, NJ</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon">
+        <div class="card-info">
+          <h3>Assembly Two</h3>
+          <p>Location: Newark, NJ</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon">
+        <div class="card-info">
+          <h3>Assembly Three</h3>
+          <p>Location: Camden, NJ</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 3: Details Panel -->
+    <div class="details-col">
+      <h2>THEME</h2>
+      <p>Faith, Service, Community</p>
+      <h3>MOTTO</h3>
+      <p>"Together we grow in spirit and action."</p>
+      <h3>MEETING INFO</h3>
+      <p>Sundays 10 AM – 12 PM<br>Local Community Centers</p>
+      <h3>SERVICE PROJECTS</h3>
+      <p>Food drives, Youth mentorship, Neighborhood clean‑ups</p>
+      <h3>CONTACT INFO</h3>
+      <p>Email: info@njiorg.org<br>Phone: (555) 123‑4567</p>
+      <a href="#" class="btn-jo">JOIN THE JOURNEY</a>
+    </div>
+  </div>
+</section>
+</body>
+</html>
