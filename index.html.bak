@@ -20,9 +20,8 @@ How to replicate in Squarespace 7.1:
 <header class="site-header">
   <div class="container header-content">
     <div class="logo">
-      <!-- Logo from current site -->
-      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
-      <span>NJ Rainbow Girls</span>
+      <!-- Placeholder for rainbow crest logo -->
+      <span>🌈</span> NJ Rainbow Girls
     </div>
     <nav class="nav-left">
       <a href="index.html">About</a>
@@ -41,8 +40,8 @@ How to replicate in Squarespace 7.1:
 <!-- Hero Banner -->
 <section class="hero-banner">
   <div class="container">
-    <!-- Background image from current site -->
-    <img src="https://images.squarespace-cdn.com/content/v1/501fbb7de4b0483765b7d2bb/1566147114849-MKI916PYAXA8QK828NTF/kathy2018.jpg" alt="Group photo of Rainbow Girls">
+    <!-- Background image can be added via CSS or inline; for now using a placeholder -->
+    <img src="https://source.unsplash.com/random/1600x900?assembly,group" alt="Group photo of Rainbow Girls">
     <div class="hero-title">OUR FOUNDATION & COMMITMENT</div>
   </div>
 </section>
@@ -62,7 +61,7 @@ How to replicate in Squarespace 7.1:
       </div>
       <div>
         <!-- Featured Image -->
-        <img src="https://images.squarespace-cdn.com/content/v1/501fbb7de4b0483765b7d2bb/d81c7fa3-a427-4d28-8042-edad518db88b/1.png" alt="Girls participating in service activity" class="mb-2">
+        <img src="https://source.unsplash.com/random/400x300?young,girls,service" alt="Girls participating in service activity" class="mb-2">
         <p class="text-center">
           <em>Girls serving their community with pride and purpose.</em>
         </p>
