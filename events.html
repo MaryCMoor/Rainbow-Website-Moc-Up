@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--
+Page: Events ("Explore Our Upcoming Events")
+Purpose: This file contains the HTML structure for the Events page.
+How to replicate in Squarespace 7.1:
+1. Header: Same as global (navy background, centered logo, split nav, search, gold CTA button).
+2. Hero Banner: Full Bleed section with background image (event banner). Overlay text: Heading 1, serif, gold, centered.
+3. Main Content: Use a Blank section with a 2-column grid (Fluid Engine) to create a sidebar layout:
+   - Left column (~65% width): Add a Grid block set to 3 columns (equal width) for the upcoming event cards.
+        Each event card: Shape Block (white) containing:
+            * Image Block (event photo)
+            * Text Block (date, e.g., "Saturday, October 14")
+            * Text Block (location)
+            * Text Block (short description)
+            * Button Block (gold CTA, "VIEW DETAILS")
+            * Button Block (gold CTA, "REGISTER NOW") [or use one button with link to registration]
+   - Right column (~35% width): Add a Shape Block for the "Monthly Gatherings" widget:
+        * Heading (e.g., "Monthly Gatherings")
+        * List or Text Blocks with details (e.g., "First Sunday of each month", "Location: Various")
+        * Optional Button Block for more info.
+4. Secondary Section: Add a new Blank section (full width) for "Annual Conferences":
+        * Heading
+        * Description or grid of annual conference cards (similar to event cards but larger)
+        * Button Block for "Learn More" or "View Past Conferences".
+5. Footer: Same as global (dark slate background, white text, logo, nav links, copyright).
+6. Mobile: In Fluid Engine mobile editor, stack columns so the left column (events grid) takes full width, then the right column (Monthly Gatherings) appears below it, and the Annual Conferences section appears after that. Each column becomes 100% width.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Events – New Jersey International Order of the Rainbow for Girls</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-content">
+    <div class="logo">
+      <span>🌈</span> NJ Rainbow Girls
+    </div>
+    <nav class="nav-left">
+      <a href="index.html">About</a>
+      <a href="assemblies.html">Assemblies</a>
+    </nav>
+    <nav class="nav-right">
+      <a href="get-involved.html">Get Involved</a>
+      <a href="events.html">Events</a>
+      <a href="member-portal.html">Members</a>
+      <button class="search-toggle" aria-label="Search">🔍</button>
+      <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Banner -->
+<section class="hero-banner">
+  <div class="container">
+    <img src="https://source.unsplash.com/random/1600x900?event,celebration" alt="Event banner">
+    <div class="hero-title">EXPLORE OUR UPCOMING EVENTS</div>
+  </div>
+</section>
+
+<!-- Main Content: Events Grid + Sidebar -->
+<section class="section">
+  <div class="container">
+    <!-- We'll simulate a 2-column grid using CSS grid for the mockup; in Squarespace use Fluid Engine 2-column grid -->
+    <div class="grid-2" style="gap:2rem;">
+      <!-- Left Column: Upcoming Events Grid (3 columns) -->
+      <div>
+        <h3 class="mb-2">Upcoming Events</h3>
+        <div class="grid-3">
+          <!-- Event Card 1 -->
+          <div class="card">
+            <img src="https://source.unsplash.com/random/400x300?leadership,workshop" alt="Leadership Workshop" class="mb-2">
+            <h4>Leadership Workshop</h4>
+            <p><strong>Date:</strong> Saturday, October 14</p>
+            <p><strong>Location:</strong> Trenton Community Center</p>
+            <p>Develop essential leadership skills through interactive activities and team-building exercises.</p>
+            <div class="mt-2">
+              <a href="#" class="btn">VIEW DETAILS</a>
+              <a href="#" class="btn" style="margin-left:0.5rem;">REGISTER NOW</a>
+            </div>
+          </div>
+          <!-- Event Card 2 -->
+          <div class="card">
+            <img src="https://source.unsplash.com/random/400x300?service,project" alt="Service Project" class="mb-2">
+            <h4>Statewide Service Day</h4>
+            <p><strong>Date:</strong> Saturday, November 11</p>
+            <p><strong>Location:</strong> Various Locations NJ</p>
+            <p>Join sisters across the state for a day of service in local communities.</p>
+            <div class="mt-2">
+              <a href="#" class="btn">VIEW DETAILS</a>
+              <a href="#" class="btn" style="margin-left:0.5rem;">REGISTER NOW</a>
+            </div>
+          </div>
+          <!-- Event Card 3 -->
+          <div class="card">
+            <img src="https://source.unsplash.com/random/400x300?celebration,gathering" alt="Fall Gathering" class="mb-2">
+            <h4>Fall Fellowship Gathering</h4>
+            <p><strong>Date:</strong> Saturday, December 9</p>
+            <p><strong>Location:</strong> Pine Hill Retreat Center</p>
+            <p>A weekend of fun, faith, and friendship for all members.</p>
+            <div class="mt-2">
+              <a href="#" class="btn">VIEW DETAILS</a>
+              <a href="#" class="btn" style="margin-left:0.5rem;">REGISTER NOW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right Column: Monthly Gatherings Widget -->
+      <div>
+        <h3 class="mb-2">Monthly Gatherings</h3>
+        <div class="card" style="padding:1.5rem;">
+          <p><strong>When:</strong> First Sunday of each month</p>
+          <p><strong>Time:</strong> 2:00 PM – 4:00 PM</p>
+          <p><strong>Where:</strong> Rotating locations across NJ (check assembly pages)</p>
+          <p>Join us for fellowship, devotions, and planning upcoming service projects.</p>
+          <a href="#" class="btn mt-2">LEARN MORE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Annual Conferences Section -->
+<section class="section">
+  <div class="container">
+    <h2 class="text-center mb-4">Annual Conferences</h2>
+    <p class="text-center mb-4" style="max-width:800px;">
+      Each year, our members come together for a weekend of inspiration, leadership development, and celebration of our achievements.
+    </p>
+    <div class="grid-3">
+      <!-- Conference Card 1 -->
+      <div class="card">
+        <img src="https://source.unsplash.com/random/400x300?conference,stage" alt="Grand Assembly" class="mb-2">
+        <h4>Grand Assembly 2027</h4>
+        <p><strong>Date:</strong> June 2027</p>
+        <p><strong>Location:</strong> Atlantic City, NJ</p>
+        <p>The premier annual event featuring workshops, ceremonies, and sisterhood activities.</p>
+        <a href="#" class="btn mt-2">VIEW DETAILS</a>
+      </div>
+      <!-- Conference Card 2 -->
+      <div class="card">
+        <img src="https://source.unsplash.com/random/400x300?retreat,team" alt="Leadership Retreat" class="mb-2">
+        <h4>Leadership Retreat</h4>
+        <p><strong>Date:</strong> September 2026</p>
+        <p><strong>Location:</strong> Princeton Blairstown Center</p>
+        <p>Intensive weekend for elected officers and committee chairs.</p>
+        <a href="#" class="btn mt-2">VIEW DETAILS</a>
+      </div>
+      <!-- Conference Card 3 -->
+      <div class="card">
+        <img src="https://source.unsplash.com/random/400x300?celebration,award" alt="Awards Ceremony" class="mb-2">
+        <h4>Awards & Recognition Ceremony</h4>
+        <p><strong>Date:</strong> May 2027</p>
+        <p><strong>Location:</strong> Newark Symphony Hall</p>
+        <p>Honoring outstanding service and achievements of our members.</p>
+        <a href="#" class="btn mt-2">VIEW DETAILS</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div>
+      <div class="footer-logo">🌈 NJ Rainbow Girls</div>
+      <p>Stay engaged and inspired through our events and gatherings.</p>
+    </div>
+    <nav>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="assemblies.html">Assemblies</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="member-portal.html">Members</a></li>
+      </ul>
+    </nav>
+    <div>
+      <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

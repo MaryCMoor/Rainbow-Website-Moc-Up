@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+Page: Assemblies Directory ("Explore Our Assemblies Across New Jersey")
+Purpose: This file contains the HTML structure for the Assemblies page.
+How to replicate in Squarespace 7.1:
+1. Header: Same as global header (navy background, centered logo, split nav, search, gold CTA button).
+2. Hero Banner: Full Bleed section with background image (assembly banners). Overlay text: Heading 1, serif, gold, centered.
+3. Interactive Directory Dashboard: Add a Blank section with 3-column grid (Fluid Engine).
+   - Column 1 (35% width): Embed Block. Paste the Mapme iframe code.
+   - Column 2 (30% width): Add a stack of Assembly Cards. Each card: Shape Block (white) containing:
+        * Image Block (state icon, left-aligned)
+        * Text Block (Assembly name, Heading 3, navy)
+        * Text Block (location, body, gray)
+        * Button Block (gold CTA, "VIEW ASSEMBLY DETAILS")
+   - Column 3 (35% width): Shape Block (white background, 2px gold border, rounded corners, padding) containing:
+        * Text Blocks for each detail section (THEME, MOTTO, MEETING INFO, SERVICE PROJECTS, CONTACT INFO) with headings (Heading 2 or 3, gold) and body text (gray).
+        * Button Block (gold CTA, "JOIN THE JOURNEY") at the bottom.
+4. Footer: Same as global footer (dark slate background, white text, logo, nav links, copyright).
+5. Mobile: In Fluid Engine mobile editor, stack columns in order: Map -> Assembly Cards -> Details Panel, each 100% width.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Assemblies Directory – New Jersey International Order of the Rainbow for Girls</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-content">
+    <div class="logo">
+      <span>🌈</span> NJ Rainbow Girls
+    </div>
+    <nav class="nav-left">
+      <a href="index.html">About</a>
+      <a href="assemblies.html">Assemblies</a>
+    </nav>
+    <nav class="nav-right">
+      <a href="get-involved.html">Get Involved</a>
+      <a href="events.html">Events</a>
+      <a href="member-portal.html">Members</a>
+      <button class="search-toggle" aria-label="Search">🔍</button>
+      <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Banner -->
+<section class="hero-banner">
+  <div class="container">
+    <img src="https://source.unsplash.com/random/1600x900?banner,assembly" alt="Assembly banners">
+    <div class="hero-title">EXPLORE OUR ASSEMBLIES ACROSS NEW JERSEY</div>
+  </div>
+</section>
+
+<!-- Interactive Directory Dashboard -->
+<section class="section">
+  <div class="container">
+    <div class="grid-3">
+      <!-- Column 1: Mapme Embed -->
+      <div>
+        <h3 class="mb-2 text-center">Find Your Local Assembly</h3>
+        <iframe src="https://viewer.mapme.com/17d68550-7d54-4e70-819b-ab59aa4b1aad"
+                width="100%" height="500" style="border:none;" title="Mapme Assembly Locations"></iframe>
+      </div>
+      
+      <!-- Column 2: Assembly Cards -->
+      <div>
+        <h3 class="mb-2">Assemblies</h3>
+        <!-- Repeat for each assembly -->
+        <div class="card mb-3">
+          <div style="display:flex; align-items:center; gap:0.8rem;">
+            <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
+            <div>
+              <h4>Assembly One – Trenton</h4>
+              <p class="mb-1">Serving Mercer County</p>
+            </div>
+          </div>
+          <a href="#" class="btn">VIEW ASSEMBLY DETAILS</a>
+        </div>
+        <div class="card mb-3">
+          <div style="display:flex; align-items:center; gap:0.8rem;">
+            <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
+            <div>
+              <h4>Assembly Two – Newark</h4>
+              <p class="mb-1">Serving Essex County</p>
+            </div>
+          </div>
+          <a href="#" class="btn">VIEW ASSEMBLY DETAILS</a>
+        </div>
+        <div class="card mb-3">
+          <div style="display:flex; align-items:center; gap:0.8rem;">
+            <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
+            <div>
+              <h4>Assembly Three – Camden</h4>
+              <p class="mb-1">Serving Camden County</p>
+            </div>
+          </div>
+          <a href="#" class="btn">VIEW ASSEMBLY DETAILS</a>
+        </div>
+      </div>
+      
+      <!-- Column 3: Assembly Details Panel -->
+      <div class="details-panel">
+        <h3 class="mb-2">Assembly Details</h3>
+        <div id="assembly-details">
+          <p>Select an assembly from the list to view details.</p>
+        </div>
+        <!-- In a real implementation, clicking a card would populate this panel via JS.
+             For static mockup, we show placeholder for first assembly. -->
+        <div style="display:none;" id="assembly-one-details">
+          <p><strong>THEME:</strong> Faith in Action</p>
+          <p><strong>MOTTO:</strong> "Together we grow in spirit and service."</p>
+          <p><strong>MEETING INFO:</strong> Sundays 2:00 PM – 4:00 PM<br>Trenton Community Center</p>
+          <p><strong>SERVICE PROJECTS:</strong> Food drives, Park clean‑ups, Youth mentoring</p>
+          <p><strong>CONTACT INFO:</strong> Email: trenton@njiorg.org<br>Phone: (609) 555‑0123</p>
+          <a href="#" class="btn-jo">JOIN THE JOURNEY</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div>
+      <div class="footer-logo">🌈 NJ Rainbow Girls</div>
+      <p>Find your local assembly and join our sisterhood.</p>
+    </div>
+    <nav>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="assemblies.html">Assemblies</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="member-portal.html">Members</a></li>
+      </ul>
+    </nav>
+    <div>
+      <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
