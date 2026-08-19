@@ -4,7 +4,11 @@ Page: Home ("Our Foundation & Commitment")
 Purpose: This file contains the HTML structure for the Home page of the NJ Rainbow Girls website.
 How to replicate in Squarespace 7.1:
 1. Header: Use Site Header settings to set background navy (#1B2A4A), add logo centered, split nav left/right, enable search, add gold CTA button "FIND AN ASSEMBLY".
-2. Hero Banner: Add a Full Bleed section with background image (group photo). Overlay text: use a Text Block with Heading 1, serif font, gold color (#C4A052), centered.
+   - Left navigation: About, Assemblies, Get Involved
+   - Center: Logo (official Rainbow for Girls emblem)
+   - Right navigation: Events, Members, search icon, gold CTA button "FIND AN ASSEMBLY"
+   - Set header to "Fixed Position" (Sticky) in Site Header settings.
+2. Hero Banner: Add a Full Bleed section with background image (group photo). Overlay text: use a Text Block with Heading 1, serif font, gold color (#C4A052), centered. Enable a subtle darkened overlay (optional) for readability.
 3. Section 1 ("Who We Are"): Add a Blank section with 2-column layout (Grid). Left column: Text Blocks for narrative. Right column: Image Block for featured image.
 4. Section 2 ("Core Values"): Add a Blank section with 4-column grid (equal columns). Each column: Shape Block (white background) containing Image Block (icon), Text Block (heading), Text Block (description). Use spacers for consistent padding.
 5. Footer: Use Site Footer with dark slate background (#1A252F), white text, logo, navigation links, copyright.
@@ -19,17 +23,18 @@ How to replicate in Squarespace 7.1:
 <body>
 <header class="site-header">
   <div class="container header-content">
-    <div class="logo">
-      <!-- Logo from current site -->
-      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
-      <span>NJ Rainbow Girls</span>
-    </div>
+    <!-- Left Navigation -->
     <nav class="nav-left">
       <a href="index.html">About</a>
       <a href="assemblies.html">Assemblies</a>
-    </nav>
-    <nav class="nav-right">
       <a href="get-involved.html">Get Involved</a>
+    </nav>
+    <!-- Centered Logo -->
+    <div class="logo-center">
+      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
+    </div>
+    <!-- Right Navigation -->
+    <nav class="nav-right">
       <a href="events.html">Events</a>
       <a href="member-portal.html">Members</a>
       <button class="search-toggle" aria-label="Search">🔍</button>
@@ -97,23 +102,11 @@ How to replicate in Squarespace 7.1:
         <h3>Friendship</h3>
         <p>Building lifelong bonds of sisterhood and support.</p>
       </div>
-      <!-- Faith -->
+      <!-- Faith, Hope, & Charity -->
       <div class="card text-center">
-        <img src="https://via.placeholder.com/48?text=✨" alt="Faith Icon" class="icon mb-2">
-        <h3>Faith</h3>
-        <p>Nurturing spiritual growth and personal belief.</p>
-      </div>
-      <!-- Hope -->
-      <div class="card text-center">
-        <img src="https://via.placeholder.com/48?text=☀️" alt="Hope Icon" class="icon mb-2">
-        <h3>Hope</h3>
-        <p>Inspiring optimism and resilience for the future.</p>
-      </div>
-      <!-- Charity -->
-      <div class="card text-center">
-        <img src="https://via.placeholder.com/48?text=🤲" alt="Charity Icon" class="icon mb-2">
-        <h3>Charity</h3>
-        <p>Giving generously to those in need.</p>
+        <img src="https://via.placeholder.com/48?text=✨" alt="Faith Hope Charity Icon" class="icon mb-2">
+        <h3>Faith, Hope, & Charity</h3>
+        <p>Nurturing spiritual growth, inspiring optimism, and giving generously to those in need.</p>
       </div>
     </div>
   </div>
