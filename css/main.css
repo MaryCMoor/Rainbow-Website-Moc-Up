@@ -84,27 +84,31 @@ h1, h2, h3, h4, h5, h6 {
   position: sticky;
   top: 0;
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .header-content {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--white);
+/* Logo centered */
+.logo-center {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  flex: 1;
 }
 
 .logo-img {
   width: 40px;
   height: 40px;
+  margin-right: 0.5rem;
 }
 
 /* Nav split */
@@ -112,6 +116,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .nav-left a, .nav-right a {
@@ -324,6 +329,14 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
+/* Footer tagline */
+.footer .tagline {
+  font-style: italic;
+  color: #ccc;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
 /* Responsive Breakpoints */
 @media (max-width: 992px) {
   .grid-3 {
@@ -336,15 +349,19 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   .header-content {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .nav-left, .nav-right {
-    justify-content: center;
-    width: 100%;
-  }
-  .nav-right {
-    margin-top: 0.5rem;
+    /* On mobile, we want to center the logo and have the nav toggle */
+    /* For simplicity, we keep left and right nav but they will wrap */
+    /* The logo-center will take full width and center */
+    .logo-center {
+      justify-content: center;
+    }
+    /* Adjust nav to be under logo or wrap */
+    .nav-left, .nav-right {
+      width: 100%;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    /* Search toggle and CTA button stay in right nav */
   }
   .hero-title {
     font-size: 2.2rem;
@@ -360,21 +377,3 @@ h1, h2, h3, h4, h5, h6 {
 .mb-4 { margin-bottom: 2rem; }
 .mt-2 { margin-top: 1rem; }
 .mt-4 { margin-top: 2rem; }
-/* Hero subtitle */
-.hero-subtitle {
-  font-family: 'Playfair Display', serif;
-  color: var(--gold);
-  font-size: 1.8rem;
-  text-align: center;
-  margin-top: 0.5rem;
-}
-
-
-/* Footer tagline */
-.footer .tagline {
-  font-style: italic;
-  color: #ccc;
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-}
-

@@ -3,8 +3,12 @@
 Page: Assemblies Directory ("Explore Our Assemblies Across New Jersey")
 Purpose: This file contains the HTML structure for the Assemblies page.
 How to replicate in Squarespace 7.1:
-1. Header: Same as global header (navy background, centered logo, split nav, search, gold CTA button).
-2. Hero Banner: Full Bleed section with background image (assembly banners). Overlay text: Heading 1, serif, gold, centered.
+1. Header: Use Site Header settings to set background navy (#1B2A4A), add logo centered, split nav left/right, enable search, add gold CTA button "FIND AN ASSEMBLY".
+   - Left navigation: About, Assemblies, Get Involved
+   - Center: Logo (official Rainbow for Girls emblem)
+   - Right navigation: Events, Members, search icon, gold CTA button "FIND AN ASSEMBLY"
+   - Set header to "Fixed Position" (Sticky) in Site Header settings.
+2. Hero Banner: Add a Full Bleed section with background image (assembly banners). Overlay text: use a Text Block with Heading 1, serif, gold, centered.
 3. Interactive Directory Dashboard: Add a Blank section with 3-column grid (Fluid Engine).
    - Column 1 (35% width): Embed Block. Paste the Mapme iframe code.
    - Column 2 (30% width): Add a stack of Assembly Cards. Each card: Shape Block (white) containing:
@@ -28,17 +32,18 @@ How to replicate in Squarespace 7.1:
 <body>
 <header class="site-header">
   <div class="container header-content">
-    <div class="logo">
-      <!-- Logo from current site -->
-      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
-      <span>NJ Rainbow Girls</span>
-    </div>
+    <!-- Left Navigation -->
     <nav class="nav-left">
       <a href="index.html">About</a>
       <a href="assemblies.html">Assemblies</a>
-    </nav>
-    <nav class="nav-right">
       <a href="get-involved.html">Get Involved</a>
+    </nav>
+    <!-- Centered Logo -->
+    <div class="logo-center">
+      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
+    </div>
+    <!-- Right Navigation -->
+    <nav class="nav-right">
       <a href="events.html">Events</a>
       <a href="member-portal.html">Members</a>
       <button class="search-toggle" aria-label="Search">🔍</button>
