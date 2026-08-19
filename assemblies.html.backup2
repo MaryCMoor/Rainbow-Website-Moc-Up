@@ -394,35 +394,123 @@
             const assemblyData = {
                 trenton9: {
                     title: "Trenton Assembly #9",
-                    content: '<h3>Theme: Theater</h3><p><strong>Motto:</strong> Theater is empathy in action</p><p><strong>Colors:</strong> Red & Gold</p><p><strong>Mascots:</strong> Comedy & Tragedy Masks</p><p><strong>Flower:</strong> Red Rose</p><p><strong>Bible Verse:</strong> Ephesians 5:19</p><p><strong>Charity:</strong> Graves Disease & Thyroid Foundation</p><p><strong>Meeting Term:</strong> May - September 2026</p><h3>Officers</h3><p><strong>Worthy Advisor:</strong> Laura E.</p><p><strong>Worthy Associate Advisor:</strong> Dominque J.</p><p><strong>Charity:</strong> Valerie C.B.</p><p><strong>Hope:</strong> Reagan S.</p><p><strong>Faith:</strong> Jailah A.</p><p><strong>Recorder:</strong> [Position Open]</p><p><strong>Treasurer:</strong> [Position Open]</p>'
+                    content: `
+                        <h3>Theme: Theater</h3>
+                        <p><strong>Motto:</strong> Theater is empathy in action</p>
+                        <p><strong>Colors:</strong> Red & Gold</p>
+                        <p><strong>Mascots:</strong> Comedy & Tragedy Masks</p>
+                        <p><strong>Flower:</strong> Red Rose</p>
+                        <p><strong>Bible Verse:</strong> Ephesians 5:19</p>
+                        <p><strong>Charity:</strong> Graves Disease & Thyroid Foundation</p>
+                        <p><strong>Meeting Term:</strong> May - September 2026</p>
+                        <h3>Officers</h3>
+                        <p><strong>Worthy Advisor:</strong> Laura E.</p>
+                        <p><strong>Worthy Associate Advisor:</strong> Dominque J.</p>
+                        <p><strong>Charity:</strong> Valerie C.B.</p>
+                        <p><strong>Hope:</strong> Reagan S.</p>
+                        <p><strong>Faith:</strong> Jailah A.</p>
+                        <p><strong>Recorder:</strong> [Position Open]</p>
+                        <p><strong>Treasurer:</strong> [Position Open]</p>
+                    `
                 },
                 clifton16: {
                     title: "Clifton Assembly #16",
-                    content: '<h3>Assembly Information</h3><p>We are in the process of reorganizing our assembly</p><p><strong>Meeting Term:</strong> May - September 2026</p><h3>Theme: Unity Through Rainbow</h3><p><strong>Motto:</strong> Alone we do so little, together we do so much</p><p><strong>Colors:</strong> Red, Orange, Yellow, Green, Blue, Indigo, Violet</p><p><strong>Symbol:</strong> Rainbow</p><p><strong>Charity:</strong> Shriner’s Children’s Hospital</p><h3>Officers</h3><p><strong>Worthy Advisor:</strong> [Position Open]</p><p><strong>Worthy Associate Advisor:</strong> Mikayla P.</p><p><strong>Charity (pro tem):</strong> Amaya N.</p><p><strong>Hope:</strong> Kaylee D.</p><p><strong>Faith:</strong> Lyla P.</p><p><strong>Recorder:</strong> [Position Open]</p><p><strong>Treasurer:</strong> [Position Open]</p>'
+                    content: `
+                        <h3>Assembly Information</h3>
+                        <p>We are in the process of reorganizing our assembly</p>
+                        <p><strong>Meeting Term:</strong> May - September 2026</p>
+                        <h3>Theme: Unity Through Rainbow</h3>
+                        <p><strong>Motto:</strong> Alone we do so little, together we do so much</p>
+                        <p><strong>Colors:</strong> Red, Orange, Yellow, Green, Blue, Indigo, Violet</p>
+                        <p><strong>Symbol:</strong> Rainbow</p>
+                        <p><strong>Charity:</strong> Shriner’s Children’s Hospital</p>
+                        <h3>Officers</h3>
+                        <p><strong>Worthy Advisor:</strong> [Position Open]</p>
+                        <p><strong>Worthy Associate Advisor:</strong> Mikayla P.</p>
+                        <p><strong>Charity (pro tem):</strong> Amaya N.</p>
+                        <p><strong>Hope:</strong> Kaylee D.</p>
+                        <p><strong>Faith:</strong> Lyla P.</p>
+                        <p><strong>Recorder:</strong> [Position Open]</p>
+                        <p><strong>Treasurer:</strong> [Position Open]</p>
+                    `
                 },
                 mistletoe20: {
                     title: "Mistletoe Assembly #20",
-                    content: '<h3>Assembly Information</h3><p>We are in the process of reorganizing our assembly</p><p><strong>Meeting Term:</strong> May - September 2026</p><h3>Theme: [Information Coming Soon]</h3><p><strong>Motto:</strong> [Information Coming Soon]</p><p><strong>Colors:</strong> [Information Coming Soon]</p><p><strong>Symbol:</strong> [Information Coming Soon]</p><p><strong>Charity:</strong> [Information Coming Soon]</p><h3>Officers</h3><p><strong>Worthy Advisor:</strong> [Position Open]</p><p><strong>Worthy Associate Advisor:</strong> [Position Open]</p><p><strong>Charity:</strong> [Position Open]</p><p><strong>Hope:</strong> [Position Open]</p><p><strong>Faith:</strong> [Position Open]</p>'
+                    content: `
+                        <h3>Assembly Information</h3>
+                        <p>We are in the process of reorganizing our assembly</p>
+                        <p><strong>Meeting Term:</strong> May - September 2026</p>
+                        <h3>Theme: [Information Coming Soon]</h3>
+                        <p><strong>Motto:</strong> [Information Coming Soon]</p>
+                        <p><strong>Colors:</strong> [Information Coming Soon]</p>
+                        <p><strong>Symbol:</strong> [Information Coming Soon]</p>
+                        <p><strong>Charity:</strong> [Information Coming Soon]</p>
+                        <h3>Officers</h3>
+                        <p><strong>Worthy Advisor:</strong> [Position Open]</p>
+                        <p><strong>Worthy Associate Advisor:</strong> [Position Open]</p>
+                        <p><strong>Charity:</strong> [Position Open]</p>
+                        <p><strong>Hope:</strong> [Position Open]</p>
+                        <p><strong>Faith:</strong> [Position Open]</p>
+                    `
                 },
                 iris31: {
                     title: "Iris Assembly #31",
-                    content: '<h3>Theme: You’re a Beautiful Butterfly</h3><p><strong>Motto:</strong> “You do not just wake up and become the butterfly. Growth is a process.” - Rupi Kaur</p><p><strong>Colors:</strong> Baby Blue & Sage Green</p><p><strong>Symbols:</strong> Wings</p><p><strong>Mascot:</strong> Butterflies</p><p><strong>Flower:</strong> Yellow & Pink Roses</p><p><strong>Charity:</strong> Children’s Dyslexia Center</p><h3>Officers</h3><p><strong>Worthy Advisor:</strong> Ariana B.V.</p><p><strong>Worthy Associate Advisor:</strong> Dahlia P.</p><p><strong>Charity:</strong> Meadow P.</p><p><strong>Hope:</strong> Madison C.P.</p><p><strong>Faith:</strong> Grace C.P.</p>'
+                    content: `
+                        <h3>Theme: You’re a Beautiful Butterfly</h3>
+                        <p><strong>Motto:</strong> “You do not just wake up and become the butterfly. Growth is a process.” - Rupi Kaur</p>
+                        <p><strong>Colors:</strong> Baby Blue & Sage Green</p>
+                        <p><strong>Symbols:</strong> Wings</p>
+                        <p><strong>Mascot:</strong> Butterflies</p>
+                        <p><strong>Flower:</strong> Yellow & Pink Roses</p>
+                        <p><strong>Charity:</strong> Children’s Dyslexia Center</p>
+                        <h3>Officers</h3>
+                        <p><strong>Worthy Advisor:</strong> Ariana B.V.</p>
+                        <p><strong>Worthy Associate Advisor:</strong> Dahlia P.</p>
+                        <p><strong>Charity:</strong> Meadow P.</p>
+                        <p><strong>Hope:</strong> Madison C.P.</p>
+                        <p><strong>Faith:</strong> Grace C.P.</p>
+                    `
                 },
                 temple32: {
                     title: "Temple Assembly #32",
-                    content: '<h3>Assembly Term: September 2025 - January 2026</h3><p><strong>Motto:</strong> “The Start of a New Chapter”</p><p><strong>Symbols:</strong> Books & Crafts</p><p><strong>Colors:</strong> Red, Yellow, Violet</p><p><strong>Song:</strong> “What It Sounds Like” by HUNTR/X</p>'
+                    content: `
+                        <h3>Assembly Term: September 2025 - January 2026</h3>
+                        <p><strong>Motto:</strong> “The Start of a New Chapter”</p>
+                        <p><strong>Symbols:</strong> Books & Crafts</p>
+                        <p><strong>Colors:</strong> Red, Yellow, Violet</p>
+                        <p><strong>Song:</strong> “What It Sounds Like” by HUNTR/X</p>
+                    `
                 },
                 golden43: {
                     title: "Golden Assembly #43",
-                    content: '<h3>Assembly Information</h3><p><strong>Meeting Term:</strong> [Information Coming Soon]</p><h3>Theme: [Information Coming Soon]</p><p><strong>Motto:</strong> [Information Coming Soon]</p><p><strong>Colors:</strong> [Information Coming Soon]</p><p><strong>Flower:</strong> [Information Coming Soon]</p>'
+                    content: `
+                        <h3>Assembly Information</h3>
+                        <p><strong>Meeting Term:</strong> [Information Coming Soon]</p>
+                        <h3>Theme: [Information Coming Soon]</h3>
+                        <p><strong>Motto:</strong> [Information Coming Soon]</p>
+                        <p><strong>Colors:</strong> [Information Coming Soon]</p>
+                        <p><strong>Flower:</strong> [Information Coming Soon]</p>
+                    `
                 },
                 holly56: {
                     title: "Holly Assembly #56",
-                    content: '<h3>Assembly Term</h3><p><strong>Motto:</strong> “Go live your dream”</p><p><strong>Symbol:</strong> Pascal</p><p><strong>Colors:</strong> Purple & Yellow</p><p><strong>Bible Verse:</strong> Psalm 37:4</p><p><strong>Flower:</strong> Narrow-leaved Sundrop</p>'
+                    content: `
+                        <h3>Assembly Term</h3>
+                        <p><strong>Motto:</strong> “Go live your dream”</p>
+                        <p><strong>Symbol:</strong> Pascal</p>
+                        <p><strong>Colors:</strong> Purple & Yellow</p>
+                        <p><strong>Bible Verse:</strong> Psalm 37:4</p>
+                        <p><strong>Flower:</strong> Narrow-leaved Sundrop</p>
+                    `
                 },
                 delval65: {
                     title: "Delaware Valley Assembly #65",
-                    content: '<h3>Assembly Term</h3><p><strong>Theme:</strong> Moana</p><p><strong>Motto:</strong> “Be True to Yourself and Follow Your Dreams”</p><p><strong>Symbol:</strong> Seashell</p>'
+                    content: `
+                        <h3>Assembly Term</h3>
+                        <p><strong>Theme:</strong> Moana</p>
+                        <p><strong>Motto:</strong> “Be True to Yourself and Follow Your Dreams”</p>
+                        <p><strong>Symbol:</strong> Seashell</p>
+                    `
                 }
             };
             

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--
+Page: Events ("Explore Our Upcoming Events")
+Purpose: This file contains the HTML structure for the Events page.
+How to replicate in Squarespace 7.1:
+1. Header: Use Site Header settings to set background navy (#1B2A4A), add logo centered, split nav left/right, enable search, add gold CTA button "FIND AN ASSEMBLY".
+   - Left navigation: About, Assemblies, Get Involved
+   - Center: Logo (official Rainbow for Girls emblem)
+   - Right navigation: Events, Members, search icon, gold CTA button "FIND AN ASSEMBLY"
+   - Set header to "Fixed Position" (Sticky) in Site Header settings.
+2. Hero Banner: Full Bleed section with background image (event banner). Overlay text: Heading 1, serif, gold, centered.
+3. Main Content: Use a Blank section with a 2-column grid (Fluid Engine) to create a sidebar layout:
+   - Left column (~65% width): Add a Grid block set to 3 columns (equal width) for the upcoming event cards.
+        Each event card: Shape Block (white) containing:
+            * Image Block (event photo)
+            * Text Block (date, e.g., "Saturday, October 14")
+            * Text Block (location)
+            * Text Block (short description)
+            * Button Block (gold CTA, "VIEW DETAILS")
+            * Button Block (gold CTA, "REGISTER NOW") [or use one button with link to registration]
+   - Right column (~35% width): Add a Shape Block for the "Monthly Gatherings" widget:
+        * Heading (e.g., "Monthly Gatherings")
+        * List or Text Blocks with details (e.g., "First Sunday of each month", "Location: Various")
+        * Optional Button Block for more info.
+4. Secondary Section: Add a new Blank section (full width) for "Annual Conferences":
+        * Heading
+        * Description or grid of annual conference cards (similar to event cards but larger)
+        * Button Block for "Learn More" or "View Past Conferences".
+5. Footer: Same as global (dark slate background, white text, logo, nav links, copyright).
+6. Mobile: In Fluid Engine mobile editor, stack columns so the left column (events grid) takes full width, then the right column (Monthly Gatherings) appears below it, and the Annual Conferences section appears after that. Each column becomes 100% width.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Events – New Jersey International Order of the Rainbow for Girls</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/main.css">
+<style>
+/* Override for hero banner to reduce height */
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+}
+.hero-banner img {
+  height: 50vh;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+}
+.hero-banner .hero-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.4);
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-content">
+    <!-- Left Navigation -->
+    <nav class="nav-left">
+      <a href="index.html">About</a>
+      <a href="assemblies.html">Assemblies</a>
+      <a href="get-involved.html">Get Involved</a>
+    </nav>
+    <!-- Centered Logo -->
+    <div class="logo-center">
+      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
+    </div>
+    <!-- Right Navigation -->
+    <nav class="nav-right">
+      <a href="events.html">Events</a>
+      <a href="member-portal.html">Members</a>
+      <button class="search-toggle" aria-label="Search">🔍</button>
+      <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Banner -->
+<section class="hero-banner">
+  <div class="container">
+    <!-- Background image: stock photo of event -->
+    <img src="https://images.unsplash.com/photo-1516450360452-914ff245d7b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Event banner">
+    <div class="hero-title">EXPLORE OUR UPCOMING EVENTS</div>
+  </div>
+</section>
+
+<!-- Main Content: Events Grid + Sidebar -->
+<section class="section">
+  <div class="container">
+    <!-- We'll simulate a 2-column grid using CSS grid for the mockup; in Squarespace use Fluid Engine 2-column grid -->
+    <div class="grid-2" style="gap:2rem;">
+      <!-- Left Column: Upcoming Events Grid (3 columns) -->
+      <div>
+        <h3 class="mb-2">Upcoming Events</h3>
+        <div class="grid-3">
+          <!-- Event Card 1: Leadership Workshop -->
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Leadership Workshop" class="mb-2">
+            <h4>Leadership Workshop</h4>
+            <p><strong>Date:</strong> Saturday, October 14</p>
+            <p><strong>Location:</strong> Trenton Community Center</p>
+            <p>Develop essential leadership skills through interactive activities and team-building exercises.</p>
+            <div class="mt-2">
+              <a href="#" class="btn">VIEW DETAILS</a>
+              <a href="#" class="btn" style="margin-left:0.5rem;">REGISTER NOW</a>
+            </div>
+          </div>
+          <!-- Event Card 2: Statewide Service Day -->
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1518621736985-3b16b922aae3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Service Project" class="mb-2">
+            <h4>Statewide Service Day</h4>
+            <p><strong>Date:</strong> Saturday, November 11</p>
+            <p><strong>Location:</strong> Various Locations NJ</p>
+            <p>Join sisters across the state for a day of service in local communities.</p>
+            <div class="mt-2">
+              <a href="#" class="btn">VIEW DETAILS</a>
+              <a href="#" class="btn" style="margin-left:0.5rem;">REGISTER NOW</a>
+            </div>
+          </div>
+          <!-- Event Card 3: Fall Gathering -->
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Fall Gathering" class="mb-2">
+            <h4>Fall Fellowship Gathering</h4>
+            <p><strong>Date:</strong> Saturday, December 9</p>
+            <p><strong>Location:</strong> Pine Hill Retreat Center</p>
+            <p>A weekend of fun, faith, and friendship for all members.</p>
+            <div class="mt-2">
+              <a href="#" class="btn">VIEW DETAILS</a>
+              <a href="#" class="btn" style="margin-left:0.5rem;">REGISTER NOW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right Column: Monthly Gatherings Widget -->
+      <div>
+        <h3 class="mb-2">Monthly Gatherings</h3>
+        <div class="card" style="padding:1.5rem;">
+          <p><strong>When:</strong> First Sunday of each month</p>
+          <p><strong>Time:</strong> 2:00 PM – 4:00 PM</p>
+          <p><strong>Where:</strong> Rotating locations across NJ (check assembly pages)</p>
+          <p>Join us for fellowship, devotions, and planning upcoming service projects.</p>
+          <a href="#" class="btn mt-2">LEARN MORE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Annual Conferences Section -->
+<section class="section">
+  <div class="container">
+    <h2 class="text-center mb-4">Annual Conferences</h2>
+    <p class="text-center mb-4" style="max-width:800px;">
+      Each year, our members come together for a weekend of inspiration, leadership development, and celebration of our achievements.
+    </p>
+    <div class="grid-3">
+      <!-- Conference Card 1: Grand Assembly 2026 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Grand Assembly" class="mb-2">
+        <h4>87th Annual New Jersey Grand Assembly Convention</h4>
+        <p><strong>Theme:</strong> "Come Alive With New Jersey Rainbow"</p>
+        <p><strong>Date:</strong> August 14th - 16th, 2026</p>
+        <p><strong>Location:</strong> Masonic Fellowship Center<br>1114 Oxmead Rd<br>Burlington, NJ 08016</p>
+        <p>The premier annual event featuring workshops, ceremonies, and sisterhood activities.</p>
+        <div class="mt-2">
+          <a href="#" class="btn">VIEW DETAILS</a>
+          <a href="#" class="btn" style="margin-left:0.5rem;">REGISTER NOW</a>
+        </div>
+      </div>
+      <!-- Conference Card 2: Leadership Retreat -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1518611012118-6d98e2e4aa60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Leadership Retreat" class="mb-2">
+        <h4>Leadership Retreat</h4>
+        <p><strong>Date:</strong> September 2026</p>
+        <p><strong>Location:</strong> Princeton Blairstown Center</p>
+        <p>Intensive weekend for elected officers and committee chairs.</p>
+        <a href="#" class="btn mt-2">VIEW DETAILS</a>
+      </div>
+      <!-- Conference Card 3: Awards Ceremony -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1526401336449-aba880fa6755?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Awards Ceremony" class="mb-2">
+        <h4>Awards & Recognition Ceremony</h4>
+        <p><strong>Date:</strong> May 2027</p>
+        <p><strong>Location:</strong> Newark Symphony Hall</p>
+        <p>Honoring outstanding service and achievements of our members.</p>
+        <a href="#" class="btn mt-2">VIEW DETAILS</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Scholarships Section -->
+<section class="section">
+  <div class="container">
+    <h2 class="text-center mb-4">Scholarships & Awards</h2>
+    <p class="text-center mb-4" style="max-width:800px;">
+      The New Jersey Grand Assembly offers several scholarship opportunities for our members.
+    </p>
+    <div class="grid-3">
+      <!-- Frances C. Black Scholarship -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Scholarship" class="mb-2">
+        <h4>Frances C. Black Scholarship</h4>
+        <p><strong>Deadline:</strong> April 1st annually</p>
+        <p><strong>Contact:</strong> Miss Kathleen Nase</p>
+        <p>Application available through the web site. Everything must be turned in to Miss Nase by April 1st.</p>
+        <a href="#" class="btn mt-2">LEARN MORE</a>
+      </div>
+      <!-- Eastern Star Nursing/Allied Health Scholarship -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Scholarship" class="mb-2">
+        <h4>Eastern Star Nursing/Allied Health Scholarship</h4>
+        <p><strong>Contact:</strong> Linda Penin</p>
+        <p><strong>Address:</strong> 24 Kimble Court, Pompton Plains, NJ</p>
+        <p>To get an application, contact Linda Penin at the address above.</p>
+        <a href="#" class="btn mt-2">LEARN MORE</a>
+      </div>
+      <!-- Eastern Star Life Skills Grant -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Grant" class="mb-2">
+        <h4>Eastern Star Life Skills Grant</h4>
+        <p><strong>Contact:</strong> Kathleen Zielinski</p>
+        <p><strong>Address:</strong> 15 Saddle Drive, Mt. Laurel NJ 08054</p>
+        <p>To get an application for the Eastern Star Life Skills Grant, contact Kathleen Zielinski.</p>
+        <a href="#" class="btn mt-2">LEARN MORE</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div>
+      <div class="footer-logo">🌈 NJ Rainbow Girls</div>
+      <p class="tagline">Rainbow Gets Girls Ready for Life!</p>
+    </div>
+    <nav>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="assemblies.html">Assemblies</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="member-portal.html">Members</a></li>
+      </ul>
+    </nav>
+    <div>
+      <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

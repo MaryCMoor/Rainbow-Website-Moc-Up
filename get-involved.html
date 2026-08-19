@@ -1,197 +1,267 @@
 <!DOCTYPE html>
-<!--
-Page: Get Involved ("Discover Ways to Get Involved")
-Purpose: This file contains the HTML structure for the Get Involved page.
-How to replicate in Squarespace 7.1:
-1. Header: Use Site Header settings to set background navy (#1B2A4A), add logo centered, split nav left/right, enable search, add gold CTA button "FIND AN ASSEMBLY".
-   - Left navigation: About, Assemblies, Get Involved
-   - Center: Logo (official Rainbow for Girls emblem)
-   - Right navigation: Events, Members, search icon, gold CTA button "FIND AN ASSEMBLY"
-   - Set header to "Fixed Position" (Sticky) in Site Header settings.
-2. Hero Banner: Full Bleed section with background image (group activity). Overlay text: Heading 1, serif, gold, centered.
-3. 4-Column Action Grid: Add a Blank section with 4-column grid (equal columns). Each column: Shape Block (white) containing:
-        * Image Block (top, circular if desired)
-        * Text Block (heading, e.g., "For Girls (Ages 11-20)")
-        * Text Block (description)
-        * Button Block (gold CTA, label as specified)
-   Use spacers for consistent padding.
-4. Footer: Same as global.
--->
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Get Involved – New Jersey International Order of the Rainbow for Girls</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/main.css">
-<style>
-/* Override for hero banner to reduce height */
-.hero-banner {
-  position: relative;
-  overflow: hidden;
-}
-.hero-banner img {
-  height: 50vh;
-  object-fit: cover;
-  width: 100%;
-  display: block;
-}
-.hero-banner .hero-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0,0,0,0.4);
-  color: var(--gold);
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Involved – New Jersey International Order of the Rainbow for Girls</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* Hero banner height override */
+        .hero-banner {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-banner img {
+            height: 50vh;
+            object-fit: cover;
+            width: 100%;
+            display: block;
+        }
+        .hero-banner .hero-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.4);
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+        }
+        
+        /* Section styling */
+        .section {
+            padding: 3rem 0;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        /* Get involved grid */
+        .involvement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .involvement-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .involvement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .involvement-image {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+        }
+        .involvement-content {
+            padding: 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .involvement-title {
+            margin: 0 0 1rem 0;
+            color: var(--navy);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .involvement-description {
+            margin-bottom: 1.5rem;
+            color: #444;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .involvement-action {
+            margin-top: auto;
+            align-self: stretch;
+        }
+        
+        /* Pledge section styling */
+        .pledge-section {
+            background-color: var(--cream);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+        .pledge-title {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            text-align: center;
+        }
+        .pledge-text {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #444;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        .pledge-highlight {
+            background-color: rgba(196, 160, 82, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 1rem 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-banner .hero-title {
+                font-size: 2rem;
+                padding: 0.75rem 1.5rem;
+            }
+            .section-title {
+                font-size: 1.75rem;
+            }
+            .involvement-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-content">
-    <!-- Left Navigation -->
-    <nav class="nav-left">
-      <a href="index.html">About</a>
-      <a href="assemblies.html">Assemblies</a>
-      <a href="get-involved.html">Get Involved</a>
-    </nav>
-    <!-- Centered Logo -->
-    <div class="logo-center">
-      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
-    </div>
-    <!-- Right Navigation -->
-    <nav class="nav-right">
-      <a href="events.html">Events</a>
-      <a href="member-portal.html">Members</a>
-      <button class="search-toggle" aria-label="Search">🔍</button>
-      <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
-    </nav>
-  </div>
-</header>
-
-<!-- Hero Banner -->
-<section class="hero-banner">
-  <div class="container">
-    <!-- Background image: stock photo of group activity -->
-    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Group activity">
-    <div class="hero-title">MAKE AN IMPACT: DISCOVER WAYS TO GET INVOLVED</div>
-  </div>
-</section>
-
-<!-- 4-Column Action Grid -->
-<section class="section">
-  <div class="container">
-    <h2 class="text-center mb-4">Ways to Get Involved</h2>
-    <div class="grid-4">
-      <!-- For Girls -->
-      <div class="card text-center">
-        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Girls" class="mb-2" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
-        <h3>For Girls (Ages 11-20)</h3>
-        <p>Join a local assembly, develop leadership, and make lifelong friends.</p>
-        <a href="assemblies.html" class="btn">JOIN US</a>
-      </div>
-      <!-- Volunteer & Mentor -->
-      <div class="card text-center">
-        <img src="https://images.unsplash.com/photo-1581091871485-2cdeb08a8eea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Volunteer" class="mb-2" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
-        <h3>Volunteer & Mentor</h3>
-        <p>Guide and inspire the next generation of leaders.</p>
-        <a href="#" class="btn">VOLUNTEER OPPORTUNITIES</a>
-      </div>
-      <!-- Support a Local Assembly -->
-      <div class="card text-center">
-        <img src="https://images.unsplash.com/photo-1522191083268-75a23dc12559?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Support" class="mb-2" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
-        <h3>Support a Local Assembly</h3>
-        <p>Help with events, fundraising, or administrative tasks.</p>
-        <a href="#" class="btn">WAYS TO SUPPORT</a>
-      </div>
-      <!-- Donate & Fundraise -->
-      <div class="card text-center">
-        <img src="https://images.unsplash.com/photo-1559548769-b1723d0fd4b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Donate" class="mb-2" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
-        <h3>Donate & Fundraise</h3>
-        <p>Contribute to our mission and support our programs.</p>
-        <a href="#" class="btn">DONATE NOW</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Rainbow Pledge Section -->
-<section class="section">
-  <div class="container">
-    <h2 class="text-center mb-4">Rainbow Pledge (Ages 5-10)</h2>
-    <p class="text-center mb-4" style="max-width:800px;">
-      The lessons taught through the Rainbow Pledge program teach moral values, teamwork, respect, patriotism, and charity to others. Rainbow builds character, self-confidence, friendship and faith.
-    </p>
-    <div class="grid-3">
-      <!-- Pledge Group Info -->
-      <div class="card">
-        <h3 class="text-center mb-2">What is Rainbow Pledge?</h3>
-        <div class="card-body">
-          <p>Rainbow Pledges are girls age 5 to 10 years old. Each pledge Group is affiliated with a Rainbow Assembly. Pledge Groups typically meet twice a month: one formal and one informal meeting. At their formal meeting, the girls wear white dresses, or skirts and blouses. They conduct their business and perform their ceremonies. At their informal meeting, the Pledge Mother or Pledge Sister plans an activity, an outing, or a charity or service project. Rainbow Pledges may earn merit bars for such things as regular attendance, participation in charity or service projects, and holding offices.</p>
-          <p>The New Jersey Rainbow Pledge Program is part of the International Order of the Rainbow for Girls (IORG). We are only affiliated with Masonic Lodges, Order of the Eastern Star Chapters, and Courts of Amaranth, however a girl does not need to be affiliated with one of these groups for membership.</p>
+    <header class="site-header">
+        <div class="container header-content">
+            <!-- Left Navigation -->
+            <nav class="nav-left">
+                <a href="index.html">About</a>
+                <a href="assemblies.html">Assemblies</a>
+                <a href="get-involved.html">Get Involved</a>
+            </nav>
+            <!-- Centered Logo -->
+            <div class="logo-center">
+                <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
+            </div>
+            <!-- Right Navigation -->
+            <nav class="nav-right">
+                <a href="events.html">Events</a>
+                <a href="member-portal.html">Members</a>
+                <button class="search-toggle" aria-label="Search">🔍</button>
+                <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
+            </nav>
         </div>
-      </div>
-      <!-- New Jersey Pledge Groups -->
-      <div class="card">
-        <h3 class="text-center mb-2">New Jersey Pledge Groups</h3>
-        <div class="card-body">
-          <ul>
-            <li>Trenton # 1 (Mercer County Area)</li>
-            <li>Holly # 6 (Ocean County Area)</li>
-            <li>Iris # 7 (Monmouth County Area)</li>
-            <li>Golden #12 (Middlesex County Area)</li>
-            <li>Clifton #18  (Passaic County Area)</li>
-            <li>Temple #19 (Bergen County Area)</li>
-          </ul>
-          <p class="mt-2"><a href="#" class="btn">FIND A PLEDGE GROUP NEAR YOU</a></p>
-        </div>
-      </div>
-      <!-- How to Join -->
-      <div class="card">
-        <h3 class="text-center mb-2">How to Join</h3>
-        <div class="card-body">
-          <p>To find out more about our Pledge Groups, contact the web master.</p>
-          <p>Requirements to petition for membership in the organization are:</p>
-          <ul class="text-start">
-            <li>A desire to want to belong to The International Order of the Rainbow for Girls.</li>
-            <li>If elected to membership, a promise to adhere to the Supreme Assembly's Constitution and Statutes, and a cheerful compliance to the By-Laws, Rules, and Regulations of the Assembly to whom she makes the petition.</li>
-            <li>Be a girl of good moral character.</li>
-            <li>Be a believer in one true and living God.</li>
-            <li>Be an unmarried girl between the ages of 5 and 10 for a Pledge Assembly, or 11 and 20 for a Rainbow Assembly.</li>
-            <li>Be either the daughter or granddaughter of a Master Mason, member of Eastern Star or Majority Rainbow Girl, or be a friend of a Rainbow Girl.</li>
-            <li>Never have petitioned and been rejected for the degrees in any Rainbow Assembly of the International Order of the Rainbow for Girls.</li>
-            <li>Be recommended by two Rainbow girls and be sponsored by either a Master Mason, member of the Order of the Eastern Star, member of the Order of the Amaranth, or a majority Rainbow Girl. This adult will also sign her petition. Your local assembly can help you find the girl & adult sponsors.</li>
-          </ul>
-          <p class="mt-2">Upon meeting the above requirements, contact a local Assembly of the International Order of the Rainbow for Girls, Masonic Lodge, Order of the Eastern Star, or Order of the Amaranth. If you don't find one or they don't know of an Assembly locally check our Assemblies Page, or e-mail us at one of the links on this web site.</p>
-          <p class="mt-2"><a href="#" class="btn">CONTACT US FOR MORE INFORMATION</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<footer class="site-footer">
-  <div class="container footer-content">
-    <div>
-      <div class="footer-logo">🌈 NJ Rainbow Girls</div>
-      <p class="tagline">Rainbow Gets Girls Ready for Life!</p>
-    </div>
-    <nav>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="assemblies.html">Assemblies</a></li>
-        <li><a href="get-involved.html">Get Involved</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="member-portal.html">Members</a></li>
-      </ul>
-    </nav>
-    <div>
-      <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="container">
+            <!-- Background image: stock photo of girls participating -->
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Get involved banner">
+            <div class="hero-title">DISCOVER WAYS TO GET INVOLVED</div>
+        </div>
+    </section>
+
+    <!-- How to Join Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">How to Join</h2>
+            <p class="section-description">
+                Joining the International Order of the Rainbow for Girls is a simple process that opens the door to lifelong friendships, leadership opportunities, and meaningful service experiences.
+            </p>
+            <div class="involvement-grid">
+                <!-- Learn About Us Card -->
+                <div class="involvement-card">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Learn About Us">
+                    <div class="involvement-content">
+                        <h3 class="involvement-title">Learn About Us</h3>
+                        <p class="involvement-description">
+                            Attend an open house or information session to see what Rainbow Girls is all about. Meet current members, advisors, and learn about our activities and values.
+                        </p>
+                        <a href="#" class="btn btn-primary involvement-action">FIND AN ASSEMBLY NEAR YOU</a>
+                    </div>
+                </div>
+                
+                <!-- Attend an Event Card -->
+                <div class="involvement-card">
+                    <img src="https://images.unsplash.com/photo-1518611012118-6d98e2e4aa60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Attend Event">
+                    <div class="involvement-content">
+                        <h3 class="involvement-title">Attend an Event</h3>
+                        <p class="involvement-description">
+                            Come to one of our public events like a service project, fundraising activity, or social gathering to experience our sisterhood in action.
+                        </p>
+                        <a href="#" class="btn btn-primary involvement-action">SEE UPCOMING EVENTS</a>
+                    </div>
+                </div>
+                
+                <!-- Talk to a Member Card -->
+                <div class="involvement-card">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Talk to Member">
+                    <div class="involvement-content">
+                        <h3 class="involvement-title">Talk to a Member</h3>
+                        <p class="involvement-description">
+                            Speak with a current Rainbow Girl or advisor to get personal insights about what membership means and how it has impacted their lives.
+                        </p>
+                        <a href="#" class="btn btn-primary involvement-action">CONTACT US</a>
+                    </div>
+                </div>
+                
+                <!-- Start the Process Card -->
+                <div class="involvement-card">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Start Process">
+                    <div class="involvement-content">
+                        <h3 class="involvement-title">Start the Process</h3>
+                        <p class="involvement-description">
+                            Complete our interest form and we'll connect you with a local assembly that matches your location and interests to begin your journey.
+                        </p>
+                        <a href="#" class="btn btn-primary involvement-action">JOIN TODAY</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pledge Section -->
+    <section class="section pledge-section">
+        <div class="container">
+            <h2 class="pledge-title">The Rainbow Pledge</h2>
+            <p class="pledge-text">
+                I promise to pray, to worship, and to serve, to honor my parents and elders, to be kind and helpful to others, to be obedient and courteous, to be honest and truthful, to be loyal to my friends and my country, to be pure in thought and deed, and to strive at all times to live by the teachings of the Bible and the lessons of the Rainbow.
+            </p>
+            <div class="pledge-highlight">This pledge guides our actions and shapes our character as Rainbow Girls.</div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div>
+                <div class="footer-logo">🌈 NJ Rainbow Girls</div>
+                <p class="tagline">Rainbow Gets Girls Ready for Life!</p>
+            </div>
+            <nav>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="assemblies.html">Assemblies</a></li>
+                    <li><a href="get-involved.html">Get Involved</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="member-portal.html">Members</a></li>
+                </ul>
+            </nav>
+            <div>
+                <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

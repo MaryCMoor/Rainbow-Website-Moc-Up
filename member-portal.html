@@ -1,223 +1,271 @@
 <!DOCTYPE html>
-<!--
-Page: Member Portal ("Exclusives for Our Rainbow Girls")
-Purpose: This file contains the HTML structure for the Member Portal page.
-How to replicate in Squarespace 7.1:
-1. Header: Use Site Header settings to set background navy (#1B2A4A), add logo centered, split nav left/right, enable search, add gold CTA button "FIND AN ASSEMBLY".
-   - Left navigation: About, Assemblies, Get Involved
-   - Center: Logo (official Rainbow for Girls emblem)
-   - Right navigation: Events, Members, search icon, gold CTA button "FIND AN ASSEMBLY"
-   - Set header to "Fixed Position" (Sticky) in Site Header settings.
-2. Hero Banner: Full Bleed section with background image (optional, could be a subtle pattern or leave as navy with text). Overlay text: Heading 1 (MEMBER PORTAL) and sub-heading (EXCLUSIVES FOR OUR RAINBOW GIRLS), both serif, gold, centered.
-3. Dashboard Grid Layout: Add a Blank section with a grid that adapts to 6 columns on desktop (but we'll use auto-fit with minmax for flexibility). In Squarespace Fluid Engine:
-   - Create a grid with multiple columns (use "Auto" columns or set to 6 columns if you want fixed, but auto-fit is more responsive).
-   - Set column width to auto-fit with minimum 250px (as in CSS) or manually set 6 equal columns if preferred.
-   - Each column contains a Shape Block (white) with:
-        * Heading (Text Block, e.g., "My Assembly")
-        * Content: varies by widget (Text Blocks, Lists, Buttons, etc.)
-        * For the Member Directory, you could add a Form Block (Squarespace native) for searchable fields.
-        * For Resources & Documents, use Button Blocks linking to PDFs or use a List Block with links.
-        * For Message Board, use a List Block or Summary Block (if connected to a blog) showing recent announcements.
-4. Footer: Same as global (dark slate background, white text, logo, nav links, copyright).
-5. Mobile: In Fluid Engine mobile editor, the grid will automatically stack columns vertically (each 100% width) due to the auto-fit minmax setting.
--->
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Member Portal – New Jersey International Order of the Rainbow for Girls</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/main.css">
-<style>
-/* Override for hero banner to reduce height */
-.hero-banner {
-  position: relative;
-  overflow: hidden;
-}
-.hero-banner img {
-  height: 50vh;
-  object-fit: cover;
-  width: 100%;
-  display: block;
-}
-.hero-banner .hero-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0,0,0,0.4);
-  color: var(--gold);
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-}
-.hero-banner .hero-subtitle {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0,0,0,0.4);
-  color: var(--gold);
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-  text-align: center;
-  max-width: 80%;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Portal – New Jersey International Order of the Rainbow for Girls</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* Hero banner height override */
+        .hero-banner {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-banner img {
+            height: 50vh;
+            object-fit: cover;
+            width: 100%;
+            display: block;
+        }
+        .hero-banner .hero-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.4);
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+        }
+        
+        /* Section styling */
+        .section {
+            padding: 3rem 0;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        /* Member portal dashboard */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .dashboard-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .dashboard-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .dashboard-content {
+            padding: 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .dashboard-title {
+            margin: 0 0 1rem 0;
+            color: var(--navy);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .dashboard-description {
+            margin-bottom: 1.5rem;
+            color: #444;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .dashboard-action {
+            margin-top: auto;
+            align-self: stretch;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-banner .hero-title {
+                font-size: 2rem;
+                padding: 0.75rem 1.5rem;
+            }
+            .section-title {
+                font-size: 1.75rem;
+            }
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-content">
-    <!-- Left Navigation -->
-    <nav class="nav-left">
-      <a href="index.html">About</a>
-      <a href="assemblies.html">Assemblies</a>
-      <a href="get-involved.html">Get Involved</a>
-    </nav>
-    <!-- Centered Logo -->
-    <div class="logo-center">
-      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
-    </div>
-    <!-- Right Navigation -->
-    <nav class="nav-right">
-      <a href="events.html">Events</a>
-      <a href="member-portal.html">Members</a>
-      <button class="search-toggle" aria-label="Search">🔍</button>
-      <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
-    </nav>
-  </div>
-</header>
+    <header class="site-header">
+        <div class="container header-content">
+            <!-- Left Navigation -->
+            <nav class="nav-left">
+                <a href="index.html">About</a>
+                <a href="assemblies.html">Assemblies</a>
+                <a href="get-involved.html">Get Involved</a>
+            </nav>
+            <!-- Centered Logo -->
+            <div class="logo-center">
+                <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
+            </div>
+            <!-- Right Navigation -->
+            <nav class="nav-right">
+                <a href="events.html">Events</a>
+                <a href="member-portal.html">Members</a>
+                <button class="search-toggle" aria-label="Search">🔍</button>
+                <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
+            </nav>
+        </div>
+    </header>
 
-<!-- Hero Banner -->
-<section class="hero-banner" style="background-color:var(--navy);">
-  <div class="container">
-    <div class="hero-title">MEMBER PORTAL</div>
-    <p class="hero-subtitle text-center mb-4" style="font-size:1.2rem; color:var(--gold); max-width:600px; margin:0 auto;">
-      EXCLUSIVES FOR OUR RAINBOW GIRLS
-    </p>
-  </div>
-</section>
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="container">
+            <!-- Background image: stock photo of girls in activities -->
+            <img src="https://images.unsplash.com/photo-1526720224328-2e00bba5f34f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Member portal banner">
+            <div class="hero-title">EXCLUSIVES FOR OUR RAINBOW GIRLS</div>
+        </div>
+    </section>
 
-<!-- Dashboard Grid Layout -->
-<section class="section">
-  <div class="container">
-    <div class="grid-6">
-      <!-- My Assembly -->
-      <div class="card">
-        <h3 class="text-center mb-2">My Assembly</h3>
-        <div class="card-body">
-          <p><strong>Local Assembly:</strong> [Select your assembly]</p>
-          <p><strong>Meeting Times:</strong> [Check assembly page for details]</p>
-          <p><strong>Location:</strong> [Check assembly page]</p>
-          <p><strong>Contact:</strong> [See assembly contact info]</p>
-          <a href="assemblies.html" class="btn mt-2 w-100">VIEW ASSEMBLY DETAILS</a>
+    <!-- Member Portal Dashboard -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Member Resources & Opportunities</h2>
+            <p class="section-description">
+                Access exclusive resources, events, and opportunities available only to active members of the International Order of the Rainbow for Girls.
+            </p>
+            <div class="dashboard-grid">
+                <!-- Events & Conventions Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">📅</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Events & Conventions</h3>
+                        <p class="dashboard-description">
+                            Register for upcoming events, conventions, workshops, and special member-only activities throughout the year.
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">VIEW EVENTS</a>
+                    </div>
+                </div>
+                
+                <!-- Leadership Development Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">🎓</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Leadership Development</h3>
+                        <p class="dashboard-description">
+                            Access officer training materials, leadership workshops, and skill-building resources to grow as a leader in your assembly and beyond.
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">LEARN MORE</a>
+                    </div>
+                </div>
+                
+                <!-- Scholarships & Awards Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">🏆</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Scholarships & Awards</h3>
+                        <p class="dashboard-description">
+                            Apply for member-exclusive scholarships, grants, and recognition programs to support your educational and service goals.
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">APPLY NOW</a>
+                    </div>
+                </div>
+                
+                <!-- Service Opportunities Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">🤝</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Service Opportunities</h3>
+                        <p class="dashboard-description">
+                            Find and participate in service projects, volunteer initiatives, and community outreach programs that make a difference.
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">GET INVOLVED</a>
+                    </div>
+                </div>
+                
+                <!-- Sisterhood & Fellowship Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">💖</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Sisterhood & Fellowship</h3>
+                        <p class="dashboard-description">
+                            Connect with fellow members through online forums, social events, and networking opportunities that build lifelong friendships.
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">CONNECT NOW</a>
+                    </div>
+                </div>
+                
+                <!-- Resources & Materials Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">📚</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Resources & Materials</h3>
+                        <p class="dashboard-description">
+                            Access ritual books, officer manuals, educational materials, and ceremonial guides for your assembly work.
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">EXPLORE RESOURCES</a>
+                    </div>
+                </div>
+                
+                <!-- Alumni Connections Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">👥</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Alumni Connections</h3>
+                        <p class="dashboard-description">
+                            Stay connected with former members through networking events, mentorship programs, and alumni associations.
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">JOIN ALUMNI NETWORK</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <!-- Upcoming Members-Only Events -->
-      <div class="card">
-        <h3 class="text-center mb-2">Upcoming Members-Only Events</h3>
-        <div class="card-body">
-          <ul class="mb-2">
-            <li><strong>Leadership Workshop:</strong> Oct 14, Trenton</li>
-            <li><strong>State Convention:</strong> Jun 2027, Atlantic City</li>
-            <li><strong>Officer Training:</strong> Sep 2026, Princeton</li>
-          </ul>
-          <a href="events.html" class="btn mt-2 w-100">VIEW ALL EVENTS</a>
-        </div>
-      </div>
-      
-      <!-- Member Directory -->
-      <div class="card">
-        <h3 class="text-center mb-2">Member Directory</h3>
-        <div class="card-body">
-          <p>Search for sisters by name, assembly, or role.</p>
-          <!-- In Squarespace, you would use a Form Block here -->
-          <form style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-            <input type="text" placeholder="Search..." style="padding:0.5rem; border:1px solid #ddd; border-radius:4px; flex:1; min-width:150px;">
-            <button type="submit" class="btn" style="padding:0.5rem 1rem; font-size:0.9rem;">SEARCH</button>
-          </form>
-          <p class="mt-2"><small>Results would appear here in a live implementation.</small></p>
-        </div>
-      </div>
-      
-      <!-- Resources & Documents -->
-      <div class="card">
-        <h3 class="text-center mb-2">Resources & Documents</h3>
-        <div class="card-body">
-          <ul class="list-unstyled mb-2">
-            <li><a href="#" class="d-block mb-1">Rituals Guide (PDF)</a></li>
-            <li><a href="#" class="d-block mb-1">By-Laws (PDF)</a></li>
-            <li><a href="#" class="d-block mb-1">Parliamentary Procedure Guide (PDF)</a></li>
-            <li><a href="#" class="d-block mb-1">Service Project Planning Kit (PDF)</a></li>
-            <li><a href="#" class="d-block mb-1">Annual Report 2025 (PDF)</a></li>
-          </ul>
-          <p class="text-center"><small>All resources are downloadable for active members.</small></p>
-        </div>
-      </div>
-      
-      <!-- Message Board -->
-      <div class="card">
-        <h3 class="text-center mb-2">Message Board</h3>
-        <div class="card-body">
-          <ul class="mb-2">
-            <li>
-              <strong>New Service Initiative Launching!</strong><br>
-              <small>Posted: Sept 1, 2026</small><br>
-              <p class="mb-1">We're excited to announce our new statewide mentorship program...</p>
-            </li>
-            <li>
-              <strong>Reminder: Officer Reports Due</strong><br>
-              <small>Posted: Aug 28, 2026</small><br>
-              <p class="mb-1">All officer reports are due by October 1st for the annual review.</p>
-            </li>
-            <li>
-              <strong>Congratulations to Our Graduating Seniors!</strong><br>
-              <small>Posted: Jun 15, 2026</small><br>
-              <p class="mb-1">Wishing our sisters all the best in their future endeavors.</p>
-            </li>
-          </ul>
-          <a href="#" class="btn mt-2 w-100">VIEW ALL ANNOUNCEMENTS</a>
-        </div>
-      </div>
-      
-      <!-- Additional Widget: Quick Links -->
-      <div class="card">
-        <h3 class="text-center mb-2">Quick Links</h3>
-        <div class="card-body">
-          <div class="d-grid gap-2">
-            <a href="#" class="btn btn-outline">Event Calendar</a>
-            <a href="#" class="btn btn-outline">Assembly Map</a>
-            <a href="#" class="btn btn-outline">Contact Leadership</a>
-            <a href="#" class="btn btn-outline">Update Profile</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer class="site-footer">
-  <div class="container footer-content">
-    <div>
-      <div class="footer-logo">🌈 NJ Rainbow Girls</div>
-      <p class="tagline">Rainbow Gets Girls Ready for Life!</p>
-    </div>
-    <nav>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="assemblies.html">Assemblies</a></li>
-        <li><a href="get-involved.html">Get Involved</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="member-portal.html">Members</a></li>
-      </ul>
-    </nav>
-    <div>
-      <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div>
+                <div class="footer-logo">🌈 NJ Rainbow Girls</div>
+                <p class="tagline">Rainbow Gets Girls Ready for Life!</p>
+            </div>
+            <nav>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="assemblies.html">Assemblies</a></li>
+                    <li><a href="get-involved.html">Get Involved</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="member-portal.html">Members</a></li>
+                </ul>
+            </nav>
+            <div>
+                <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

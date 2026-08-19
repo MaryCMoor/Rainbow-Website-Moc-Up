@@ -1,337 +1,265 @@
 <!DOCTYPE html>
-<!--
-Page: Grand Assembly Portal ("Grand Assembly Portal")
-Purpose: This file contains the HTML structure for the Grand Assembly Portal page.
-How to replicate in Squarespace 7.1:
-1. Header: Use Site Header settings to set background navy (#1B2A4A), add logo centered, split nav left/right, enable search, add gold CTA button "FIND AN ASSEMBLY".
-   - Left navigation: About, Assemblies, Get Involved
-   - Center: Logo (official Rainbow for Girls emblem)
-   - Right navigation: Events, Members, search icon, gold CTA button "FIND AN ASSEMBLY"
-   - Set header to "Fixed Position" (Sticky) in Site Header settings.
-2. Hero Banner: Full Bleed section with background image (optional, could be a subtle pattern or leave as navy with text). Overlay text: Heading 1 (GRAND ASSEMBLY PORTAL), serif, gold, centered.
-3. Convention Dashboard Grid: Add a Blank section with a grid that adapts to 6 columns on desktop (auto-fit minmax). In Squarespace Fluid Engine:
-   - Create a grid with auto-fit columns, minimum 250px.
-   - Each column contains a Shape Block (white) with:
-        * Heading (Text Block, e.g., "Schedule of Events")
-        * Content: varies by widget (Text Blocks, Lists, Buttons, etc.)
-        * For the Grand Officers Directory, use Image Blocks for headshots and Text Blocks for titles.
-        * For Registration & Forms, use Button Blocks linking to PDFs or use a List Block with links.
-        * For Session Materials, use Button Blocks linking to PDFs or use a List Block with links.
-        * For Achievements & Awards, use a List Block or a grid of images with captions.
-        * For Message Board, use a List Block or Summary Block (if connected to a blog) showing state announcements.
-4. Footer: Same as global (dark slate background, white text, logo, nav links, copyright).
-5. Mobile: In Fluid Engine mobile editor, the grid will automatically stack columns vertically (each 100% width) due to the auto-fit minmax setting.
--->
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Grand Assembly Portal – New Jersey International Order of the Rainbow for Girls</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/main.css">
-<style>
-/* Override for hero banner to reduce height */
-.hero-banner {
-  position: relative;
-  overflow: hidden;
-}
-.hero-banner img {
-  height: 50vh;
-  object-fit: cover;
-  width: 100%;
-  display: block;
-}
-.hero-banner .hero-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0,0,0,0.4);
-  color: var(--gold);
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-}
-.hero-banner .hero-subtitle {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0,0,0,0.4);
-  color: var(--gold);
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-  text-align: center;
-  max-width: 80%;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Assembly Portal – New Jersey International Order of the Rainbow for Girls</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* Hero banner height override */
+        .hero-banner {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-banner img {
+            height: 50vh;
+            object-fit: cover;
+            width: 100%;
+            display: block;
+        }
+        .hero-banner .hero-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.4);
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+        }
+        
+        /* Section styling */
+        .section {
+            padding: 3rem 0;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        /* Grand assembly dashboard */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .dashboard-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .dashboard-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .dashboard-content {
+            padding: 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .dashboard-title {
+            margin: 0 0 1rem 0;
+            color: var(--navy);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .dashboard-description {
+            margin-bottom: 1.5rem;
+            color: #444;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .dashboard-action {
+            margin-top: auto;
+            align-self: stretch;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-banner .hero-title {
+                font-size: 2rem;
+                padding: 0.75rem 1.5rem;
+            }
+            .section-title {
+                font-size: 1.75rem;
+            }
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-content">
-    <!-- Left Navigation -->
-    <nav class="nav-left">
-      <a href="index.html">About</a>
-      <a href="assemblies.html">Assemblies</a>
-      <a href="get-involved.html">Get Involved</a>
-    </nav>
-    <!-- Centered Logo -->
-    <div class="logo-center">
-      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
-    </div>
-    <!-- Right Navigation -->
-    <nav class="nav-right">
-      <a href="events.html">Events</a>
-      <a href="member-portal.html">Members</a>
-      <button class="search-toggle" aria-label="Search">🔍</button>
-      <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
-    </nav>
-  </div>
-</header>
+    <header class="site-header">
+        <div class="container header-content">
+            <!-- Left Navigation -->
+            <nav class="nav-left">
+                <a href="index.html">About</a>
+                <a href="assemblies.html">Assemblies</a>
+                <a href="get-involved.html">Get Involved</a>
+            </nav>
+            <!-- Centered Logo -->
+            <div class="logo-center">
+                <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
+            </div>
+            <!-- Right Navigation -->
+            <nav class="nav-right">
+                <a href="events.html">Events</a>
+                <a href="member-portal.html">Members</a>
+                <button class="search-toggle" aria-label="Search">🔍</button>
+                <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
+            </nav>
+        </div>
+    </header>
 
-<!-- Hero Banner -->
-<section class="hero-banner" style="background-color:var(--navy);">
-  <div class="container">
-    <div class="hero-title">GRAND ASSEMBLY PORTAL</div>
-    <p class="hero-subtitle text-center mb-4" style="font-size:1.2rem; color:var(--gold); max-width:600px; margin:0 auto;">
-      YOUR GATEWAY TO STATE CONVENTION RESOURCES
-    </p>
-  </div>
-</section>
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="container">
+            <!-- Background image: stock photo of convention -->
+            <img src="https://images.unsplash.com/photo-1516450360452-914ff245d7b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Grand Assembly banner">
+            <div class="hero-title">GRAND ASSEMBLY PORTAL</div>
+        </div>
+    </section>
 
-<!-- Convention Dashboard Grid -->
-<section class="section">
-  <div class="container">
-    <div class="grid-6">
-      <!-- Grand Worthy Advisor's Term -->
-      <div class="card">
-        <h3 class="text-center mb-2">Grand Worthy Advisor's Term</h3>
-        <div class="card-body">
-          <p><strong>Term:</strong> 2026-2027</p>
-          <p><strong>Theme:</strong> Run Your Own Race</p>
-          <p><strong>Mottos:</strong><br>
-          “You don’t have to be first. You just have to keep going.”<br>
-          “We may each run a different race, but we never have to run it alone.”</p>
-          <p><strong>Colors:</strong> Powerful Pink, Outstanding Orange, and Grounded Gold</p>
-          <p><strong>Mascot:</strong> Turtle</p>
-          <p><strong>Symbols:</strong> Running Shoes, Race Bib, Medals</p>
-          <p><strong>Flower:</strong> Marigolds</p>
-          <p><strong>Song:</strong> “Count on Me” - Bruno Mars</p>
-          <p><strong>Charity:</strong> Special Olympics</p>
-          <p><strong>Bible verse:</strong> 2 Timothy 4:7</p>
-          <a href="#" class="btn mt-2 w-100">VIEW DETAILS</a>
+    <!-- Grand Assembly Dashboard -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Grand Assembly Information & Resources</h2>
+            <p class="section-description">
+                Everything you need to know about the New Jersey Grand Assembly Convention and related activities.
+            </p>
+            <div class="dashboard-grid">
+                <!-- Convention Details Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">📅</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Convention Details</h3>
+                        <p class="dashboard-description">
+                            87th Annual New Jersey Grand Assembly Convention<br>
+                            <strong>Theme:</strong> "Come Alive With New Jersey Rainbow"<br>
+                            <strong>Date:</strong> August 14-16, 2026<br>
+                            <strong>Location:</strong> Masonic Fellowship Center, Burlington, NJ
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">VIEW FULL SCHEDULE</a>
+                    </div>
+                </div>
+                
+                <!-- Registration & Tickets Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">🎫</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Registration & Tickets</h3>
+                        <p class="dashboard-description">
+                            Register for the convention, purchase tickets, and access payment plans and deadlines.
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">REGISTER NOW</a>
+                    </div>
+                </div>
+                
+                <!-- Officers & Leadership Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">👑</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Grand Officers</h3>
+                        <p class="dashboard-description">
+                            <strong>Grand Worthy Advisor:</strong> Valerie Cordero-Beckert (2026-2027)<br>
+                            <strong>Grand Secretary:</strong> [Position]<br>
+                            <strong>Grand Treasurer:</strong> [Position]<br>
+                            <strong>Grand Chaplain:</strong> [Position]
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">VIEW ALL OFFICERS</a>
+                    </div>
+                </div>
+                
+                <!-- Workshops & Activities Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">🎓</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Workshops & Activities</h3>
+                        <p class="dashboard-description">
+                            Leadership workshops, sisterhood activities, service projects, and special events throughout the convention weekend.
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">EXPLORE SCHEDULE</a>
+                    </div>
+                </div>
+                
+                <!-- Travel & Accommodations Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">🏨</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Travel & Accommodations</h3>
+                        <p class="dashboard-description">
+                            Information on lodging, transportation, local attractions, and group rates for attendees and families.
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">GET TRAVEL INFO</a>
+                    </div>
+                </div>
+                
+                <!-- Alumni & Visitors Card -->
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">👥</div>
+                    <div class="dashboard-content">
+                        <h3 class="dashboard-title">Alumni & Visitors</h3>
+                        <p class="dashboard-description">
+                            Special programming, registration, and activities for alumni, visitors, and guests attending the convention.
+                        </p>
+                        <a href="#" class="btn btn-primary dashboard-action">ALUMNI INFORMATION</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <!-- 2025-2026 New Jersey Grand Officers -->
-      <div class="card">
-        <h3 class="text-center mb-2">2025-2026 Grand Officers</h3>
-        <div class="card-body">
-          <div class="mb-2">
-            <strong>Grand Worthy Advisor</strong><br>
-            Michaela S.<br>
-            Holly #56
-          </div>
-          <div class="mb-2">
-            <strong>Grand Worthy Associate Advisor, Grand Editor, & Grand Representative to Connecticut</strong><br>
-            Valerie C.B.<br>
-            Trenton #9
-          </div>
-          <div class="mb-2">
-            <strong>Grand Hope & Grand Representative to New York</strong><br>
-            Jocelyn P.<br>
-            Holly #56
-          </div>
-          <div class="mb-2">
-            <strong>Grand Faith, Grand Soloist & Grand Representative to Massachusetts</strong><br>
-            Laura E.<br>
-            Trenton #9
-          </div>
-          <div class="mb-2">
-            <strong>Grand Recorder, Rose Lecture & Grand Representative to New Hampshire</strong><br>
-            Ariana B.V.<br>
-            Iris #31
-          </div>
-          <div class="mb-2">
-            <strong>Grand Treasurer, Dad Talk & Grand Representative to Louisiana</strong><br>
-            Faithanne B.<br>
-            Delaware Valley #65
-          </div>
-          <div class="mb-2">
-            <strong>Grand Chaplain & Grand Representative to Pennsylvania</strong><br>
-            Hailey M.<br>
-            Trenton #9
-          </div>
-          <div class="mb-2">
-            <strong>Grand Drill Leader, Grand Lecturer, & Grand Representative to Alabama</strong><br>
-            Roxanne B.<br>
-            Trenton #9
-          </div>
-          <div class="mb-2">
-            <strong>Grand Love & Grand Representative to South Carolina & Washington/Idaho</strong><br>
-            Valentina C.B.<br>
-            Trenton #9
-          </div>
-          <div class="mb-2">
-            <strong>Grand Religion & Grand Representative to Tennessee</strong><br>
-            Alexandra H.<br>
-            Iris #31
-          </div>
-          <div class="mb-2">
-            <strong>Grand Nature, Grand Historian, & Grand Representative to Colorado</strong><br>
-            Madeleine S.<br>
-            Trenton #9
-          </div>
-          <div class="mb-2">
-            <strong>Grand Immortality & Grand Representative to Texas</strong><br>
-            Meadow P.<br>
-            Iris #31
-          </div>
-          <div class="mb-2">
-            <strong>Grand Fidelity & Grand Representative to Rhode Island</strong><br>
-            Dominque J.<br>
-            Trenton #9
-          </div>
-          <div class="mb-2">
-            <strong>Grand Patriotism & Grand Representative to Missouri</strong><br>
-            Dahlia P.<br>
-            Iris #31
-          </div>
-          <div class="mb-2">
-            <strong>Grand Service & Grand Representative to California</strong><br>
-            Natalie P.<br>
-            Holly #56
-          </div>
-          <div class="mb-2">
-            <strong>Grand Confidential Observer, Grand Choir Director & Grand Representative to North Carolina</strong><br>
-            Samantha A.<br>
-            Iris #31
-          </div>
-          <div class="mb-2">
-            <strong>Grand Representative to Maryland & Virginia</strong><br>
-            Jailah A.<br>
-            Trenton #9
-          </div>
-          <a href="#" class="btn mt-2 w-100">VIEW ALL OFFICERS</a>
-        </div>
-      </div>
-      
-      <!-- Registration & Forms -->
-      <div class="card">
-        <h3 class="text-center mb-2">Registration & Forms</h3>
-        <div class="card-body">
-          <ul class="mb-2">
-            <li><a href="#" class="d-block mb-1">Grand Assembly Registration Packet (PDF)</a></li>
-            <li><a href="#" class="d-block mb-1">Delegate Credentials Form (PDF)</a></li>
-            <li><a href="#" class="d-block mb-1">Chaperon Registration Form (PDF)</a></li>
-            <li><a href="#" class="d-block mb-1">Workshop Selection Form (PDF)</a></li>
-          </ul>
-          <p class="text-center"><small>All forms are required for participation.</small></p>
-        </div>
-      </div>
-      
-      <!-- Session Materials -->
-      <div class="card">
-        <h3 class="text-center mb-2">Session Materials</h3>
-        <div class="card-body">
-          <ul class="mb-2">
-            <li><a href="#" class="d-block mb-1">Session 1: Leadership Foundations (PDF)</a></li>
-            <li><a href="#" class="d-block mb-1">Session 2: Service Planning (PDF)</a></li>
-            <li><a href="#" class="d-block mb-1">Session 3: Sisterhood & Bonding (PDF)</a></li>
-            <li><a href="#" class="d-block mb-1">Session 4: Ritual & Tradition (PDF)</a></li>
-            <li><a href="#" class="d-block mb-1">Bylaws & Parliamentary Guide (PDF)</a></li>
-          </ul>
-          <p class="text-center"><small>Materials are updated annually.</small></p>
-        </div>
-      </div>
-      
-      <!-- Achievements & Awards -->
-      <div class="card">
-        <h3 class="text-center mb-2">Achievements & Awards</h3>
-        <div class="card-body">
-          <div class="mb-2">
-            <strong>Grand Cross of Color (2026)</strong><br>
-            <p>Awarded to Olivia Brown for outstanding service and leadership.</p>
-          </div>
-          <div class="mb-2">
-            <strong>Ruby Award (2026)</strong><br>
-            <p>Awarded to the Newark Assembly for largest service project increase.</p>
-          </div>
-          <div class="mb-2">
-            <strong>Service to Humanity Award (2025)</strong><br>
-            <p>Awarded to Sophia Lee for 500+ service hours.</p>
-          </div>
-          <a href="#" class="btn mt-2 w-100">VIEW HISTORY OF AWARDS</a>
-        </div>
-      </div>
-      
-      <!-- Message Board -->
-      <div class="card">
-        <h3 class="text-center mb-2">Message Board</h3>
-        <div class="card-body">
-          <ul class="mb-2">
-            <li>
-              <strong>Important: Dress Code Update for 2027</strong><br>
-              <small>Posted: Sept 10, 2026</small><br>
-              <p class="mb-1">Please review the updated dress code guidelines for all convention events.</p>
-            </li>
-            <li>
-              <strong>Volunteers Needed: Registration Team</strong><br>
-              <small>Posted: Sept 5, 2026</small><br>
-              <p class="mb-1">We are seeking sisters to assist with registration on Friday evening.</p>
-            </li>
-            <li>
-              <strong>Reminder: Hotel Booking Deadline</strong><br>
-              <small>Posted: Aug 25, 2026</small><br>
-              <p class="mb-1">Room blocks expire on October 1st. Book now to secure the group rate.</p>
-            </li>
-          </ul>
-          <a href="#" class="btn mt-2 w-100">VIEW ALL ANNOUNCEMENTS</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Gavel History Section -->
-<section class="section">
-  <div class="container">
-    <h2 class="text-center mb-4">Gavel History</h2>
-    <div class="grid-2">
-      <div>
-        <h3>📜 Gavel History</h3>
-        <p>The gavel used in our Grand Assembly sessions has a rich history dating back to the early days of Rainbow in New Jersey. Passed down through generations of Supreme Inspectors, each gavel carries the legacy of leadership and service.</p>
-      </div>
-      <div>
-        <h3>📜 View Gavel Path</h3>
-        <p>Explore the journey of our ceremonial gavel through the years, from its inception to its current place of honor in our Assembly Room.</p>
-        <a href="#" class="btn mt-2">LEARN MORE</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="container footer-content">
-    <div>
-      <div class="footer-logo">🌈 NJ Rainbow Girls</div>
-      <p class="tagline">Rainbow Gets Girls Ready for Life!</p>
-    </div>
-    <nav>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="assemblies.html">Assemblies</a></li>
-        <li><a href="get-involved.html">Get Involved</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="member-portal.html">Members</a></li>
-      </ul>
-    </nav>
-    <div>
-      <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div>
+                <div class="footer-logo">🌈 NJ Rainbow Girls</div>
+                <p class="tagline">Rainbow Gets Girls Ready for Life!</p>
+            </div>
+            <nav>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="assemblies.html">Assemblies</a></li>
+                    <li><a href="get-involved.html">Get Involved</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="member-portal.html">Members</a></li>
+                </ul>
+            </nav>
+            <div>
+                <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
