@@ -3,7 +3,11 @@
 Page: Get Involved ("Discover Ways to Get Involved")
 Purpose: This file contains the HTML structure for the Get Involved page.
 How to replicate in Squarespace 7.1:
-1. Header: Same as global (navy background, centered logo, split nav, search, gold CTA button).
+1. Header: Use Site Header settings to set background navy (#1B2A4A), add logo centered, split nav left/right, enable search, add gold CTA button "FIND AN ASSEMBLY".
+   - Left navigation: About, Assemblies, Get Involved
+   - Center: Logo (official Rainbow for Girls emblem)
+   - Right navigation: Events, Members, search icon, gold CTA button "FIND AN ASSEMBLY"
+   - Set header to "Fixed Position" (Sticky) in Site Header settings.
 2. Hero Banner: Full Bleed section with background image (group activity). Overlay text: Heading 1, serif, gold, centered.
 3. 4-Column Action Grid: Add a Blank section with 4-column grid (equal columns). Each column: Shape Block (white) containing:
         * Image Block (top, circular if desired)
@@ -23,17 +27,18 @@ How to replicate in Squarespace 7.1:
 <body>
 <header class="site-header">
   <div class="container header-content">
-    <div class="logo">
-      <!-- Logo from current site -->
-      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
-      <span>NJ Rainbow Girls</span>
-    </div>
+    <!-- Left Navigation -->
     <nav class="nav-left">
       <a href="index.html">About</a>
       <a href="assemblies.html">Assemblies</a>
-    </nav>
-    <nav class="nav-right">
       <a href="get-involved.html">Get Involved</a>
+    </nav>
+    <!-- Centered Logo -->
+    <div class="logo-center">
+      <img src="http://static1.squarespace.com/static/501fbb7de4b0483765b7d2bb/t/64f7f50f61ceac5b49341e6f/1693971727463/New+Jersey+Logo+2018_T.png?format=1500w" alt="NJ Rainbow Girls Logo" class="logo-img">
+    </div>
+    <!-- Right Navigation -->
+    <nav class="nav-right">
       <a href="events.html">Events</a>
       <a href="member-portal.html">Members</a>
       <button class="search-toggle" aria-label="Search">🔍</button>
