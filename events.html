@@ -35,6 +35,31 @@ How to replicate in Squarespace 7.1:
 <title>Events – New Jersey International Order of the Rainbow for Girls</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/main.css">
+<style>
+/* Override for hero banner to reduce height */
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+}
+.hero-banner img {
+  height: 50vh;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+}
+.hero-banner .hero-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.4);
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+}
+</style>
 </head>
 <body>
 <header class="site-header">
