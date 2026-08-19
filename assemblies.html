@@ -9,18 +9,18 @@ How to replicate in Squarespace 7.1:
    - Right navigation: Events, Members, search icon, gold CTA button "FIND AN ASSEMBLY"
    - Set header to "Fixed Position" (Sticky) in Site Header settings.
 2. Hero Banner: Add a Full Bleed section with background image (assembly banners). Overlay text: use a Text Block with Heading 1, serif, gold, centered.
-3. Interactive Directory Dashboard: Add a Blank section with 3-column grid (Fluid Engine).
-   - Column 1 (35% width): Embed Block. Paste the Mapme iframe code.
-   - Column 2 (30% width): Add a stack of Assembly Cards. Each card: Shape Block (white) containing:
-        * Image Block (state icon, left-aligned)
-        * Text Block (Assembly name, Heading 3, navy)
-        * Text Block (location, body, gray)
-        * Button Block (gold CTA, "VIEW ASSEMBLY DETAILS")
-   - Column 3 (35% width): Shape Block (white background, 2px gold border, rounded corners, padding) containing:
-        * Text Blocks for each detail section (THEME, MOTTO, MEETING INFO, SERVICE PROJECTS, CONTACT INFO) with headings (Heading 2 or 3, gold) and body text (gray).
-        * Button Block (gold CTA, "JOIN THE JOURNEY") at the bottom.
-4. Footer: Same as global footer (dark slate background, white text, logo, nav links, copyright).
-5. Mobile: In Fluid Engine mobile editor, stack columns in order: Map -> Assembly Cards -> Details Panel, each 100% width.
+3. About the Assemblies Section: Add a Blank section with overview text about the assemblies (full width).
+4. Interactive Directory: Add a Blank section with a custom layout:
+   - Two-column grid layout (Fluid Engine)
+     * Left column (~60%): Custom map interface (replacing Mapme embed)
+     * Right column (~40%): Assembly cards in 2-column grid
+   - Below the two-column grid: Details panel that shows when an assembly is selected (full width)
+5. Footer: Same as global (dark slate background, white text, logo, nav links, copyright).
+6. Mobile: In Fluid Engine mobile editor, stack sections vertically:
+   - About section (full width)
+   - Map (full width)
+   - Assembly cards grid (becomes 2-column on tablet, 1-column on mobile)
+   - Details panel (full width)
 -->
 <html lang="en">
 <head>
@@ -52,6 +52,67 @@ How to replicate in Squarespace 7.1:
   padding: 1rem 2rem;
   border-radius: 4px;
 }
+
+/* Custom map styling */
+.custom-map {
+  position: relative;
+  height: 400px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.custom-map-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #666;
+}
+.custom-map-placeholder h4 {
+  margin-bottom: 0.5rem;
+}
+.custom-map-placeholder p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Assembly cards grid - 2 columns on desktop */
+.assembly-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Details panel */
+.details-panel {
+  background-color: white;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+.details-panel h2 {
+  color: var(--gold);
+  margin-top: 0;
+}
+.details-panel h3 {
+  color: var(--gold);
+  margin-top: 1.5rem;
+}
+.details-panel p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .assembly-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
 <body>
@@ -80,448 +141,148 @@ How to replicate in Squarespace 7.1:
 <!-- Hero Banner -->
 <section class="hero-banner">
   <div class="container">
-    <!-- Background image: stock photo of girls group or banners -->
-    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Assembly banners">
+    <!-- Background image: stock photo of assemblies -->
+    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Assemblies banner">
     <div class="hero-title">EXPLORE OUR ASSEMBLIES ACROSS NEW JERSEY</div>
   </div>
 </section>
 
-<!-- Interactive Directory Dashboard -->
+<!-- About the Assemblies Section -->
 <section class="section">
   <div class="container">
-    <div class="grid-3">
-      <!-- Column 1: Mapme Embed -->
+    <h2 class="text-center mb-4">About Our Assemblies</h2>
+    <p class="text-center mb-4" style="max-width:800px;">
+      The International Order of the Rainbow for Girls is organized into local groups called Assemblies. Each Assembly meets regularly in their community to develop leadership, participate in service projects, and build lifelong friendships. With Assemblies throughout New Jersey, there's sure to be one near you!
+    </p>
+    <p class="text-center">
+      Each Assembly has its own unique identity, including a theme, motto, colors, and service projects. Click on any Assembly card below to learn more about that specific group.
+    </p>
+  </div>
+</section>
+
+<!-- Interactive Directory: Map + Assembly Cards -->
+<section class="section">
+  <div class="container">
+    <!-- Two-column layout: Map and Assembly Cards -->
+    <div class="grid-2" style="gap:2rem;">
+      <!-- Left Column: Custom Map -->
       <div>
-        <h3 class="mb-2 text-center">Find Your Local Assembly</h3>
-        <iframe src="https://viewer.mapme.com/17d68550-7d54-4e70-819b-ab59aa4b1aad"
-                width="100%" height="400" style="border:none;" title="Mapme Assembly Locations"></iframe>
+        <h3 class="mb-2">New Jersey Assembly Map</h3>
+        <div class="custom-map">
+          <div class="custom-map-placeholder">
+            <h4>Interactive Map of NJ Assemblies</h4>
+            <p>Click on map pins to see Assembly information<br>or select an Assembly from the list to the right</p>
+          </div>
+        </div>
       </div>
       
-      <!-- Column 2: Assembly Cards -->
+      <!-- Right Column: Assembly Cards (2-column grid) -->
       <div>
         <h3 class="mb-2">New Jersey Assemblies</h3>
-        <!-- Trenton Assembly #9 -->
-        <div class="card mb-3 cursor-pointer" data-assembly="trenton9">
-          <div style="display:flex; align-items:center; gap:0.8rem; cursor:pointer;">
-            <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-            <div>
-              <h4>Trenton Assembly #9</h4>
-              <p class="mb-1">Mercer County</p>
+        <div class="assembly-grid">
+          <!-- Trenton Assembly #9 -->
+          <div class="card cursor-pointer" data-assembly="trenton9">
+            <div style="display:flex; align-items:center; gap:0.8rem;">
+              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
+              <div>
+                <h4>Trenton Assembly #9</h4>
+                <p class="mb-1">Mercer County</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Clifton Assembly #16 -->
-        <div class="card mb-3 cursor-pointer" data-assembly="clifton16">
-          <div style="display:flex; align-items:center; gap:0.8rem; cursor:pointer;">
-            <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-            <div>
-              <h4>Clifton Assembly #16</h4>
-              <p class="mb-1">Passaic County</p>
+          
+          <!-- Clifton Assembly #16 -->
+          <div class="card cursor-pointer" data-assembly="clifton16">
+            <div style="display:flex; align-items:center; gap:0.8rem;">
+              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
+              <div>
+                <h4>Clifton Assembly #16</h4>
+                <p class="mb-1">Passaic County</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Mistletoe Assembly #20 -->
-        <div class="card mb-3 cursor-pointer" data-assembly="mistletoe20">
-          <div style="display:flex; align-items:center; gap:0.8rem; cursor:pointer;">
-            <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-            <div>
-              <h4>Mistletoe Assembly #20</h4>
-              <p class="mb-1">Reorganizing</p>
+          
+          <!-- Mistletoe Assembly #20 -->
+          <div class="card cursor-pointer" data-assembly="mistletoe20">
+            <div style="display:flex; align-items:center; gap:0.8rem;">
+              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
+              <div>
+                <h4>Mistletoe Assembly #20</h4>
+                <p class="mb-1">Bergen County</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Iris Assembly #31 -->
-        <div class="card mb-3 cursor-pointer" data-assembly="iris31">
-          <div style="display:flex; align-items:center; gap:0.8rem; cursor:pointer;">
-            <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-            <div>
-              <h4>Iris Assembly #31</h4>
-              <p class="mb-1">Monmouth County</p>
+          
+          <!-- Iris Assembly #31 -->
+          <div class="card cursor-pointer" data-assembly="iris31">
+            <div style="display:flex; align-items:center; gap:0.8rem;">
+              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
+              <div>
+                <h4>Iris Assembly #31</h4>
+                <p class="mb-1">Monmouth County</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Temple Assembly #32 -->
-        <div class="card mb-3 cursor-pointer" data-assembly="temple32">
-          <div style="display:flex; align-items:center; gap:0.8rem; cursor:pointer;">
-            <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-            <div>
-              <h4>Temple Assembly #32</h4>
-              <p class="mb-1">Bergen County</p>
+          
+          <!-- Temple Assembly #32 -->
+          <div class="card cursor-pointer" data-assembly="temple32">
+            <div style="display:flex; align-items:center; gap:0.8rem;">
+              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
+              <div>
+                <h4>Temple Assembly #32</h4>
+                <p class="mb-1">Bergen County</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Golden Assembly #43 -->
-        <div class="card mb-3 cursor-pointer" data-assembly="golden43">
-          <div style="display:flex; align-items:center; gap:0.8rem; cursor:pointer;">
-            <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-            <div>
-              <h4>Golden Assembly #43</h4>
-              <p class="mb-1">Middlesex County</p>
+          
+          <!-- Golden Assembly #43 -->
+          <div class="card cursor-pointer" data-assembly="golden43">
+            <div style="display:flex; align-items:center; gap:0.8rem;">
+              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
+              <div>
+                <h4>Golden Assembly #43</h4>
+                <p class="mb-1">Middlesex County</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Holly Assembly #56 -->
-        <div class="card mb-3 cursor-pointer" data-assembly="holly56">
-          <div style="display:flex; align-items:center; gap:0.8rem; cursor:pointer;">
-            <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-            <div>
-              <h4>Holly Assembly #56</h4>
-              <p class="mb-1">Ocean County</p>
+          
+          <!-- Holly Assembly #56 -->
+          <div class="card cursor-pointer" data-assembly="holly56">
+            <div style="display:flex; align-items:center; gap:0.8rem;">
+              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
+              <div>
+                <h4>Holly Assembly #56</h4>
+                <p class="mb-1">Ocean County</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Delaware Valley Assembly #65 -->
-        <div class="card mb-3 cursor-pointer" data-assembly="delval65">
-          <div style="display:flex; align-items:center; gap:0.8rem; cursor:pointer;">
-            <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
-            <div>
-              <h4>Delaware Valley Assembly #65</h4>
-              <p class="mb-1">Multiple Counties</p>
+          
+          <!-- Delaware Valley Assembly #65 -->
+          <div class="card cursor-pointer" data-assembly="delval65">
+            <div style="display:flex; align-items:center; gap:0.8rem;">
+              <img src="https://via.placeholder.com/48?text=NJ" alt="NJ Icon" class="icon">
+              <div>
+                <h4>Delaware Valley Assembly #65</h4>
+                <p class="mb-1">Burlington County</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
-      <!-- Column 3: Assembly Details Panel -->
-      <div class="details-panel">
-        <h3 class="mb-2">Assembly Details</h3>
-        <div id="assembly-details">
-          <p>Select an assembly from the list to view details.</p>
-        </div>
-        
-        <!-- Trenton Assembly #9 Details -->
-        <div style="display:none;" id="trenton9-details">
-          <p><strong>Term:</strong> May - September 2026</p>
-          <p><strong>Worthy Advisor's Term:</strong></p>
-          <p><strong>Theme:</strong> Theater</p>
-          <p><strong>Motto:</strong> Theater is empathy in action</p>
-          <p><strong>Colors:</strong> Red & Gold</p>
-          <p><strong>Mascots:</strong> Comedy & Tragedy Masks</p>
-          <p><strong>Charity:</strong> Graves Disease & Thyroid Foundation</p>
-          <p><strong>Flower:</strong> Red Rose</p>
-          <p><strong>Bible Verse:</strong> Ephesians 5:19</p>
-          <p><strong>Officers:</strong></p>
-          <p>Worthy Advisor: Laura E.</p>
-          <p>Worthy Associate Advisor: Dominque J.</p>
-          <p>Charity: Valerie C.B.</p>
-          <p>Hope: Reagan S.</p>
-          <p>Faith: Jailah A.</p>
-          <p>Recorder: [Position Open]</p>
-          <p>Treasurer: [Position Open]</p>
-          <p>Chaplain: Taylor F.</p>
-          <p>Drill Leader: Charlotte L.</p>
-          <p>Love: Tavishee U.</p>
-          <p>Religion: Emma P.</p>
-          <p>Nature: Ricki S.</p>
-          <p>Immortality: Maddy S.</p>
-          <p>Fidelity: Kaelynn W.</p>
-          <p>Patriotism: Lily S.</p>
-          <p>Service: Tina C.B.</p>
-          <p>Confidential Observer: Roxanne B.</p>
-          <p>Outer Observer: Emily P.</p>
-          <p><strong>Mother Advisor:</strong> Mrs. Christine Storie</p>
-          <hr>
-          <p><strong>Grand Officers from this Assembly:</strong></p>
-          <p>Valerie C.B. - Grand Worthy Advisor</p>
-          <p>Laura E. - Grand Worthy Associate Advisor & Grand Representative to Ohio</p>
-          <p>Roxanne B. - Grand Charity & Grand Representative to New York</p>
-          <p>Dominque J. - Grand Fidelity & Grand Representative to Rhode Island</p>
-          <p>Jailah A. - Grand Representative to Maryland & Virginia</p>
-          <p>Emily P. - [Position Open]</p>
-        </div>
-        
-        <!-- Clifton Assembly #16 Details -->
-        <div style="display:none;" id="clifton16-details">
-          <p><strong>Term:</strong> Reorganizing</p>
-          <p><strong>Assembly Term:</strong></p>
-          <p><strong>Theme:</strong> [To be determined]</p>
-          <p><strong>Motto:</strong> [To be determined]</p>
-          <p><strong>Colors:</strong> [To be determined]</p>
-          <p><strong>Symbol:</strong> [To be determined]</p>
-          <p><strong>Charity:</strong> Shriner’s Children’s Hospital</p>
-          <p><strong>Officers:</strong></p>
-          <p>Worthy Advisor: [Position Open]</p>
-          <p>Worthy Associate Advisor: Mikayla P.</p>
-          <p>Charity (pro tem): Amaya N.</p>
-          <p>Hope: Kaylee D.</p>
-          <p>Faith: Lyla P.</p>
-          <p>Recorder: [Position Open]</p>
-          <p>Treasurer: [Position Open]</p>
-          <p>Chaplain: [Position Open]</p>
-          <p>Drill Leader: [Position Open]</p>
-          <p>Love: Erika L.</p>
-          <p>Religion: Jaelyn P.</p>
-          <p>Nature: Kayleigh C.</p>
-          <p>Immortality: Alyssa H.</p>
-          <p>Fidelity: Kadence D.</p>
-          <p>Patriotism: Kylie K.</p>
-          <p>Service: Skylar D.</p>
-          <p>Confidential Observer: Bianca D.</p>
-          <p>Outer Observer: [Position Open]</p>
-          <p><strong>Mother Advisor:</strong> Ms. Carolyn Hiller</p>
-          <hr>
-          <p><strong>Grand Officers from this Assembly:</strong></p>
-          <p>Kaydence D. - Grand Confidential Observer & Grand Representative to Florida</p>
-          <p>Kaylee D. - Grand Representative to Nebraska & Texas</p>
-        </div>
-        
-        <!-- Mistletoe Assembly #20 Details -->
-        <div style="display:none;" id="mistletoe20-details">
-          <p><strong>Term:</strong> May - September 2026</p>
-          <p><strong>Assembly Term:</strong></p>
-          <p><strong>Theme:</strong> Unity Through Rainbow</p>
-          <p><strong>Motto:</strong> Alone we do so little, together we do so much</p>
-          <p><strong>Colors:</strong> Red, Orange, Yellow, Green, Blue, Indigo, Violet</p>
-          <p><strong>Symbol:</strong> Rainbow</p>
-          <p><strong>Charity:</strong> Shriner’s Children’s Hospital</p>
-          <p><strong>Officers:</strong></p>
-          <p>Worthy Advisor: [Position Open]</p>
-          <p>Worthy Associate Advisor: Mikayla P.</p>
-          <p>Charity (pro tem): Amaya N.</p>
-          <p>Hope: Kaylee D.</p>
-          <p>Faith: Lyla P.</p>
-          <p>Recorder: [Position Open]</p>
-          <p>Treasurer: [Position Open]</p>
-          <p>Chaplain: [Position Open]</p>
-          <p>Drill Leader: [Position Open]</p>
-          <p>Love: Erika L.</p>
-          <p>Religion: Jaelyn P.</p>
-          <p>Nature: Kayleigh C.</p>
-          <p>Immortality: Alyssa H.</p>
-          <p>Fidelity: Kadence D.</p>
-          <p>Patriotism: Kylie K.</p>
-          <p>Service: Skylar D.</p>
-          <p>Confidential Observer: Bianca D.</p>
-          <p>Outer Observer: [Position Open]</p>
-          <p><strong>Mother Advisor:</strong> Ms. Carolyn Hiller</p>
-          <hr>
-          <p><strong>Grand Officers from this Assembly:</strong></p>
-          <p>Kaydence D. - Grand Confidential Observer & Grand Representative to Florida</p>
-          <p>Kaylee D. - Grand Representative to Nebraska & Texas</p>
-        </div>
-        
-        <!-- Iris Assembly #31 Details -->
-        <div style="display:none;" id="iris31-details">
-          <p><strong>Term:</strong> May - September 2026</p>
-          <p><strong>Worthy Advisor Term:</strong></p>
-          <p><strong>Theme:</strong> You’re a Beautiful Butterfly</p>
-          <p><strong>Motto:</strong> “You do not just wake up and become the butterfly. Growth is a process.” - Rupi Kaur</p>
-          <p><strong>Colors:</strong> Baby Blue & Sage Green</p>
-          <p><strong>Symbols:</strong> Wings</p>
-          <p><strong>Mascot:</strong> Butterflies</p>
-          <p><strong>Flower:</strong> Yellow & Pink Roses</p>
-          <p><strong>Charity:</strong> Children’s Dyslexia Center</p>
-          <p><strong>Officers:</strong></p>
-          <p>Worthy Advisor: Ariana B.V.</p>
-          <p>Worthy Associate Advisor: Dahlia P.</p>
-          <p>Charity: Meadow P.</p>
-          <p>Hope: Madison C.P.</p>
-          <p>Faith: Grace C.P.</p>
-          <p>Recorder: Sammy A.</p>
-          <p>Treasurer: [Position Open]</p>
-          <p>Chaplain: [Position Open]</p>
-          <p>Drill Leader: [Position Open]</p>
-          <p>Love: [Position Open]</p>
-          <p>Religion: [Position Open]</p>
-          <p>Nature: [Position Open]</p>
-          <p>Immortality: [Position Open]</p>
-          <p>Fidelity: [Position Open]</p>
-          <p>Patriotism: [Position Open]</p>
-          <p>Service: [Position Open]</p>
-          <p>Confidential Observer: Alexandra H.</p>
-          <p>Outer Observer: [Position Open]</p>
-          <p><strong>Mother Advisor:</strong> Mrs. Jeanne Gionfriddo</p>
-          <hr>
-          <p><strong>Grand Officers from this Assembly:</strong></p>
-          <p>Alexandra H. - Grand Hope & Grand Representative to Maryland</p>
-          <p>Grace C.P. - Grand Recorder, Rose Lecture, & Grand Representative to South Carolina</p>
-          <p>Dahlia P. - Grand Chaplain & Grand Representative to Virginia</p>
-          <p>Samantha A. - Grand Love & Grand Representative to Washington/Idaho</p>
-          <p>Madison C.P. - Grand Nature, Grand Historian, & Grand Representative to California</p>
-          <p>Meadow P. - Grand Immortality & Grand Representative to North Carolina</p>
-          <p>Ariana B.V. - Grand Service, Grand Soloist, & Grand Representative to Massachusetts</p>
-        </div>
-        
-        <!-- Temple Assembly #32 Details -->
-        <div style="display:none;" id="temple32-details">
-          <p><strong>Term:</strong> September 2025 - January 2026</p>
-          <p><strong>Assembly’s Term:</strong></p>
-          <p><strong>Motto:</strong> “The Start of a New Chapter”</p>
-          <p><strong>Symbols:</strong> Books & Crafts</p>
-          <p><strong>Colors:</strong> Red, Yellow, Violet</p>
-          <p><strong>Song:</strong> “What It Sounds Like” by HUNTR/X</p>
-          <p><strong>Service Projects:</strong> Children’s Book Collection, Gift Bags for The Valley Hospital Pediatric Unit & Thanksgiving Basket Collection</p>
-          <p><strong>Officers:</strong></p>
-          <p>Worthy Advisor: [Position Open]</p>
-          <p>Worthy Associate Advisor: [Position Open]</p>
-          <p>Charity: [Position Open]</p>
-          <p>Hope: [Position Open]</p>
-          <p>Faith: [Position Open]</p>
-          <p>Recorder: [Position Open]</p>
-          <p>Treasurer: [Position Open]</p>
-          <p>Chaplain: [Position Open]</p>
-          <p>Drill Leader: [Position Open]</p>
-          <p>Love: Audrey C.</p>
-          <p>Religion: [Position Open]</p>
-          <p>Nature: Carabella A.</p>
-          <p>Immortality: [Position Open]</p>
-          <p>Fidelity: [Position Open]</p>
-          <p>Patriotism: [Position Open]</p>
-          <p>Service: Fiona R.</p>
-          <p>Confidential Observer: [Position Open]</p>
-          <p>Outer Observer: [Position Open]</p>
-          <p><strong>Mother Advisor:</strong> Miss Allison Gordon</p>
-        </div>
-        
-        <!-- Golden Assembly #43 Details -->
-        <div style="display:none;" id="golden43-details">
-          <p><strong>Term:</strong> [To be determined]</p>
-          <p><strong>Assembly Term:</strong></p>
-          <p><strong>Theme:</strong> [To be determined]</p>
-          <p><strong>Motto:</strong> [To be determined]</p>
-          <p><strong>Colors:</strong> [To be determined]</p>
-          <p><strong>Bible Verse:</strong> Psalm 37:4</p>
-          <p><strong>Flower:</strong> Narrow-leaved Sundrop</p>
-          <p><strong>Charity Project:</strong> Dyslexia Centers of America</p>
-          <p><strong>Officers:</strong></p>
-          <p>Worthy Advisor: [Position Open]</p>
-          <p>Worthy Associate Advisor: [Position Open]</p>
-          <p>Charity: [Position Open]</p>
-          <p>Hope: [Position Open]</p>
-          <p>Faith: [Position Open]</p>
-          <p>Recorder: [Position Open]</p>
-          <p>Treasurer: [Position Open]</p>
-          <p>Chaplain: [Position Open]</p>
-          <p>Drill Leader: Jocelyn P.</p>
-          <p>Love: Skylar P.</p>
-          <p>Religion: [Position Open]</p>
-          <p>Nature: [Position Open]</p>
-          <p>Immortality: [Position Open]</p>
-          <p>Fidelity: [Position Open]</p>
-          <p>Patriotism: Ainsley F.</p>
-          <p>Service: [Position Open]</p>
-          <p>Confidential Observer: Ameelia C.</p>
-          <p>Outer Observer: [Position Open]</p>
-          <p><strong>Mother Advisor:</strong> Mrs. Colleen Kidwell</p>
-          <hr>
-          <p><strong>Grand Officers from this Assembly:</strong></p>
-          <p>Jocelyn P. - Grand Drill Leader & Grand Representative to Connecticut</p>
-          <p>Michaela S. - Grand Religion & Grand Representative to Nevada</p>
-        </div>
-        
-        <!-- Holly Assembly #56 Details -->
-        <div style="display:none;" id="holly56-details">
-          <p><strong>Term:</strong> May - September 2026</p>
-          <p><strong>Assembly Term:</strong></p>
-          <p><strong>Theme:</strong> [To be determined]</p>
-          <p><strong>Motto:</strong> [To be determined]</p>
-          <p><strong>Colors:</strong> [To be determined]</p>
-          <p><strong>Symbol:</strong> [To be determined]</p>
-          <p><strong>Flower:</strong> [To be determined]</p>
-          <p><strong>Charity Project:</strong> Dyslexia Centers of America</p>
-          <p><strong>Officers:</strong></p>
-          <p>Worthy Advisor: [Position Open]</p>
-          <p>Worthy Associate Advisor: [Position Open]</p>
-          <p>Charity: [Position Open]</p>
-          <p>Hope: [Position Open]</p>
-          <p>Faith: [Position Open]</p>
-          <p>Recorder: [Position Open]</p>
-          <p>Treasurer: [Position Open]</p>
-          <p>Chaplain: [Position Open]</p>
-          <p>Drill Leader: Jocelyn P.</p>
-          <p>Love: Skylar P.</p>
-          <p>Religion: [Position Open]</p>
-          <p>Nature: [Position Open]</p>
-          <p>Immortality: [Position Open]</p>
-          <p>Fidelity: [Position Open]</p>
-          <p>Patriotism: Ainsley F.</p>
-          <p>Service: [Position Open]</p>
-          <p>Confidential Observer: Ameelia C.</p>
-          <p>Outer Observer: [Position Open]</p>
-          <p><strong>Mother Advisor:</strong> Mrs. Colleen Kidwell</p>
-          <hr>
-          <p><strong>Grand Officers from this Assembly:</strong></p>
-          <p>Jocelyn P. - Grand Drill Leader & Grand Representative to Connecticut</p>
-          <p>Michaela S. - Grand Religion & Grand Representative to Nevada</p>
-        </div>
-        
-        <!-- Delaware Valley Assembly #65 Details -->
-        <div style="display:none;" id="delval65-details">
-          <p><strong>Term:</strong> January - May 2025</p>
-          <p><strong>Assembly Term:</strong></p>
-          <p><strong>Theme:</strong> Moana</p>
-          <p><strong>Motto:</strong> “Be True to Yourself and Follow Your Dreams”</p>
-          <p><strong>Symbol:</strong> Seashell</p>
-          <p><strong>Mascot:</strong> Pua, Loyal Pet Pig</p>
-          <p><strong>Flower:</strong> Pink Plumeria</p>
-          <p><strong>Colors:</strong> Ocean Blue, Red</p>
-          <p><strong>Charity Project:</strong> Veterans</p>
-          <p><strong>Service Project:</strong> Soda Can Tabs for Shriner’s Shepherds</p>
-          <p><strong>Song:</strong> “An Innocent Warrior” by Matthew Ineleo</p>
-          <p><strong>Bible Verse:</strong> Psalm 32:6-11</p>
-          <p><strong>Officers:</strong></p>
-          <p>Worthy Advisor: [Position Open]</p>
-          <p>Worthy Associate Advisor: [Position Open]</p>
-          <p>Charity: [Position Open]</p>
-          <p>Hope: [Position Open]</p>
-          <p>Faith: [Position Open]</p>
-          <p>Recorder: [Position Open]</p>
-          <p>Treasurer: [Position Open]</p>
-          <p>Chaplain: [Position Open]</p>
-          <p>Drill Leader: [Position Open]</p>
-          <p>Love: Faithanne B.</p>
-          <p>Religion: [Position Open]</p>
-          <p>Nature: [Position Open]</p>
-          <p>Immortality: [Position Open]</p>
-          <p>Fidelity: [Position Open]</p>
-          <p>Patriotism: Kylie A.</p>
-          <p>Service: [Position Open]</p>
-          <p>Confidential Observer: [Position Open]</p>
-          <p>Outer Observer: [Position Open]</p>
-          <p><strong>Mother Advisor:</strong> Mrs. Heather Shoppas</p>
-          <hr>
-          <p><strong>Grand Officers from this Assembly:</strong></p>
-          <p>Faithanne B. - Grand Treasurer, Rose Dad Talk, & Grand Representative to Louisiana</p>
-          <p>Jadyn T. - Grand Fidelity & Grand Representative to New Mexico</p>
-        </div>
+    </div>
+    
+    <!-- Details Panel (full width below) -->
+    <div class="details-panel" id="assemblyDetails">
+      <h2 id="detailsTitle">Select an Assembly to View Details</h2>
+      <p id="detailsContent">
+        Click on any Assembly card above to see detailed information including theme, motto, meeting information, service projects, and contact details.
+      </p>
+      <div class="text-center mt-4">
+        <a href="#" class="btn">JOIN THE JOURNEY</a>
       </div>
     </div>
   </div>
 </section>
-
-<script>
-// Simple script to show assembly details when a card is clicked
-document.addEventListener('DOMContentLoaded', function() {
-  const cards = document.querySelectorAll('.card[data-assembly]');
-  const detailsContainer = document.getElementById('assembly-details');
-  
-  cards.forEach(card => {
-    card.addEventListener('click', function() {
-      // Hide all detail panels
-      document.querySelectorAll('[id$="-details"]').forEach(el => {
-        el.style.display = 'none';
-      });
-      // Remove active class from all cards
-      cards.forEach(c => c.classList.remove('active'));
-      // Show the selected assembly details
-      const assemblyId = this.getAttribute('data-assembly');
-      const detailsDiv = document.getElementById(assemblyId + '-details');
-      if (detailsDiv) {
-        detailsDiv.style.display = 'block';
-        detailsContainer.insertAdjacentElement('afterend', detailsDiv);
-        this.classList.add('active');
-      }
-    });
-  });
-});
-</script>
 
 <footer class="site-footer">
   <div class="container footer-content">
@@ -543,5 +304,168 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 </footer>
+
+<script>
+// JavaScript for interactive assembly details
+document.addEventListener('DOMContentLoaded', function() {
+  const assemblyCards = document.querySelectorAll('.card');
+  const detailsTitle = document.getElementById('detailsTitle');
+  const detailsContent = document.getElementById('detailsContent');
+  
+  // Assembly data
+  const assemblyData = {
+    trenton9: {
+      title: "Trenton Assembly #9",
+      content: `
+        <h3>Theme: Theater</h3>
+        <p><strong>Motto:</strong> Theater is empathy in action</p>
+        <p><strong>Colors:</strong> Red & Gold</p>
+        <p><strong>Mascots:</strong> Comedy & Tragedy Masks</p>
+        <p><strong>Flower:</strong> Red Rose</p>
+        <p><strong>Bible Verse:</strong> Ephesians 5:19</p>
+        <p><strong>Charity:</strong> Graves Disease & Thyroid Foundation</p>
+        <p><strong>Meeting Term:</strong> May - September 2026</p>
+        <h3>Officers</h3>
+        <p><strong>Worthy Advisor:</strong> Laura E.</p>
+        <p><strong>Worthy Associate Advisor:</strong> Dominque J.</p>
+        <p><strong>Charity:</strong> Valerie C.B.</p>
+        <p><strong>Hope:</strong> Reagan S.</p>
+        <p><strong>Faith:</strong> Jailah A.</p>
+        <p><strong>Recorder:</strong> [Position Open]</p>
+        <p><strong>Treasurer:</strong> [Position Open]</p
+      `
+    },
+    clifton16: {
+      title: "Clifton Assembly #16",
+      content: `
+        <h3>Assembly Information</h3>
+        <p>We are in the process of reorganizing our assembly</p>
+        <p><strong>Meeting Term:</strong> May - September 2026</p>
+        <h3>Theme: Unity Through Rainbow</h3>
+        <p><strong>Motto:</strong> Alone we do so little, together we do so much</p>
+        <p><strong>Colors:</strong> Red, Orange, Yellow, Green, Blue, Indigo, Violet</p>
+        <p><strong>Symbol:</strong> Rainbow</p>
+        <p><strong>Charity:</strong> Shriner’s Children’s Hospital</p>
+        <h3>Officers</h3>
+        <p><strong>Worthy Advisor:</strong> [Position Open]</p>
+        <p><strong>Worthy Associate Advisor:</strong> Mikayla P.</p>
+        <p><strong>Charity (pro tem):</strong> Amaya N.</p>
+        <p><strong>Hope:</strong> Kaylee D.</p>
+        <p><strong>Faith:</strong> Lyla P.</p>
+        <p><strong>Recorder:</strong> [Position Open]</p>
+        <p><strong>Treasurer:</strong> [Position Open]</p
+      `
+    },
+    mistletoe20: {
+      title: "Mistletoe Assembly #20",
+      content: `
+        <h3>Assembly Information</h3>
+        <p>We are in the process of reorganizing our assembly</p>
+        <p><strong>Meeting Term:</strong> May - September 2026</p>
+        <h3>Theme: [Information Coming Soon]</h3>
+        <p><strong>Motto:</strong> [Information Coming Soon]</p>
+        <p><strong>Colors:</strong> [Information Coming Soon]</p>
+        <p><strong>Symbol:</strong> [Information Coming Soon]</p>
+        <p><strong>Charity:</strong> [Information Coming Soon]</p>
+        <h3>Officers</h3>
+        <p><strong>Worthy Advisor:</strong> [Position Open]</p>
+        <p><strong>Worthy Associate Advisor:</strong> [Position Open]</p>
+        <p><strong>Charity:</strong> [Position Open]</p>
+        <p><strong>Hope:</strong> [Position Open]</p>
+        <p><strong>Faith:</strong> [Position Open]</p
+      `
+    },
+    iris31: {
+      title: "Iris Assembly #31",
+      content: `
+        <h3>Theme: You’re a Beautiful Butterfly</h3>
+        <p><strong>Motto:</strong> “You do not just wake up and become the butterfly. Growth is a process.” - Rupi Kaur</p>
+        <p><strong>Colors:</strong> Baby Blue & Sage Green</p>
+        <p><strong>Symbols:</strong> Wings</p>
+        <p><strong>Mascot:</strong> Butterflies</p>
+        <p><strong>Flower:</strong> Yellow & Pink Roses</p>
+        <p><strong>Charity:</strong> Children’s Dyslexia Center</p>
+        <h3>Officers</h3>
+        <p><strong>Worthy Advisor:</strong> Ariana B.V.</p>
+        <p><strong>Worthy Associate Advisor:</strong> Dahlia P.</p>
+        <p><strong>Charity:</strong> Meadow P.</p>
+        <p><strong>Hope:</strong> Madison C.P.</p>
+        <p><strong>Faith:</strong> Grace C.P.</p
+      `
+    },
+    temple32: {
+      title: "Temple Assembly #32",
+      content: `
+        <h3>Assembly Term: September 2025 - January 2026</h3>
+        <p><strong>Motto:</strong> “The Start of a New Chapter”</p>
+        <p><strong>Symbols:</strong> Books & Crafts</p>
+        <p><strong>Colors:</strong> Red, Yellow, Violet</p>
+        <p><strong>Song:</strong> “What It Sounds Like” by HUNTR/X</p
+      `
+    },
+    golden43: {
+      title: "Golden Assembly #43",
+      content: `
+        <h3>Assembly Information</h3>
+        <p><strong>Meeting Term:</strong> [Information Coming Soon]</p>
+        <h3>Theme: [Information Coming Soon]</h3>
+        <p><strong>Motto:</strong> [Information Coming Soon]</p>
+        <p><strong>Colors:</strong> [Information Coming Soon]</p>
+        <p><strong>Flower:</strong> [Information Coming Soon]</p
+      `
+    },
+    holly56: {
+      title: "Holly Assembly #56",
+      content: `
+        <h3>Assembly Term</h3>
+        <p><strong>Motto:</strong> “Go live your dream”</p>
+        <p><strong>Symbol:</strong> Pascal</p>
+        <p><strong>Colors:</strong> Purple & Yellow</p>
+        <p><strong>Bible Verse:</strong> Psalm 37:4</p>
+        <p><strong>Flower:</strong> Narrow-leaved Sundrop</p
+      `
+    },
+    delval65: {
+      title: "Delaware Valley Assembly #65",
+      content: `
+        <h3>Assembly Term</h3>
+        <p><strong>Theme:</strong> Moana</p>
+        <p><strong>Motto:</strong> “Be True to Yourself and Follow Your Dreams”</p>
+        <p><strong>Symbol:</strong> Seashell</p
+      `
+    }
+  };
+  
+  // Add click event listeners to assembly cards
+  assemblyCards.forEach(card => {
+    card.addEventListener('click', function() {
+      const assemblyId = this.getAttribute('data-assembly');
+      const assembly = assemblyData[assemblyId];
+      
+      if (assembly) {
+        detailsTitle.textContent = assembly.title;
+        detailsContent.innerHTML = assembly.content;
+        
+        // Remove active class from all cards and add to clicked one
+        assemblyCards.forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+      }
+    });
+  });
+  
+  // Add CSS for active state
+  const style = document.createElement('style');
+  style.textContent = `
+    .card.active {
+      border: 2px solid var(--gold);
+      background-color: rgba(196, 160, 82, 0.1);
+    }
+    .cursor-pointer {
+      cursor: pointer;
+    }
+  `;
+  document.head.appendChild(style);
+});
+</script>
 </body>
 </html>
