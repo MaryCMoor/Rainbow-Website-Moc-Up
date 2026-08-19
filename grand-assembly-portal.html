@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--
+Page: Grand Assembly Portal ("Grand Assembly Portal")
+Purpose: This file contains the HTML structure for the Grand Assembly Portal page.
+How to replicate in Squarespace 7.1:
+1. Header: Same as global (navy background, centered logo, split nav, search, gold CTA button).
+2. Hero Banner: Full Bleed section with background image (optional, could be a subtle pattern or leave as navy with text). Overlay text: Heading 1 (GRAND ASSEMBLY PORTAL), serif, gold, centered.
+3. Convention Dashboard Grid: Add a Blank section with a grid that adapts to 6 columns on desktop (auto-fit minmax). In Squarespace Fluid Engine:
+   - Create a grid with auto-fit columns, minimum 250px.
+   - Each column contains a Shape Block (white) with:
+        * Heading (Text Block, e.g., "Schedule of Events")
+        * Content: varies by widget (Text Blocks, Lists, Buttons, etc.)
+        * For the Grand Officers Directory, use Image Blocks for headshots and Text Blocks for titles.
+        * For Registration & Forms, use Button Blocks linking to PDFs or use a List Block with links.
+        * For Session Materials, use Button Blocks linking to PDFs or use a List Block with links.
+        * For Achievements & Awards, use a List Block or a grid of images with captions.
+        * For Message Board, use a List Block or Summary Block (if connected to a blog) showing state announcements.
+4. Footer: Same as global (dark slate background, white text, logo, nav links, copyright).
+5. Mobile: In Fluid Engine mobile editor, the grid will automatically stack columns vertically (each 100% width) due to the auto-fit minmax setting.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grand Assembly Portal – New Jersey International Order of the Rainbow for Girls</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-content">
+    <div class="logo">
+      <span>🌈</span> NJ Rainbow Girls
+    </div>
+    <nav class="nav-left">
+      <a href="index.html">About</a>
+      <a href="assemblies.html">Assemblies</a>
+    </nav>
+    <nav class="nav-right">
+      <a href="get-involved.html">Get Involved</a>
+      <a href="events.html">Events</a>
+      <a href="member-portal.html">Members</a>
+      <button class="search-toggle" aria-label="Search">🔍</button>
+      <a href="assemblies.html" class="cta-btn">FIND AN ASSEMBLY</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Banner -->
+<section class="hero-banner" style="background-color:var(--navy);">
+  <div class="container">
+    <div class="hero-title">GRAND ASSEMBLY PORTAL</div>
+    <p class="hero-subtitle text-center mb-4" style="font-size:1.2rem; color:var(--gold); max-width:600px; margin:0 auto;">
+      YOUR GATEWAY TO STATE CONVENTION RESOURCES
+    </p>
+  </div>
+</section>
+
+<!-- Convention Dashboard Grid -->
+<section class="section">
+  <div class="container">
+    <div class="grid-6">
+      <!-- Schedule of Events -->
+      <div class="card">
+        <h3 class="text-center mb-2">Schedule of Events</h3>
+        <div class="card-body">
+          <p><strong>Grand Assembly 2027</strong></p>
+          <ul class="mb-2">
+            <li>Friday, June 10: Registration & Ice Cream Social</li>
+            <li>Saturday, June 11: Workshops, Sessions, & Evening Gala</li>
+            <li>Sunday, June 12: Memorial Service & Closing Ceremony</li>
+          </ul>
+          <a href="#" class="btn mt-2 w-100">VIEW FULL SCHEDULE</a>
+        </div>
+      </div>
+      
+      <!-- Grand Officers Directory -->
+      <div class="card">
+        <h3 class="text-center mb-2">Grand Officers Directory</h3>
+        <div class="card-body">
+          <div class="text-center mb-2">
+            <img src="https://source.unsplash.com/random/150x150?woman,leader" alt="Grand Worthy Advisor" class="mb-2" style="width:100px;height:100px;object-fit:cover;border-radius:50%;">
+            <h4>Emily Johnson</h4>
+            <p>Grand Worthy Advisor</p>
+          </div>
+          <div class="text-center mb-2">
+            <img src="https://source.unsplash.com/random/150x150?woman,leader" alt="Grand Secretary" class="mb-2" style="width:100px;height:100px;object-fit:cover;border-radius:50%;">
+            <h4>Sarah Martinez</h4>
+            <p>Grand Secretary</p>
+          </div>
+          <div class="text-center">
+            <img src="https://source.unsplash.com/random/150x150?woman,leader" alt="Grand Treasurer" class="mb-2" style="width:100px;height:100px;object-fit:cover;border-radius:50%;">
+            <h4>Ashley Davis</h4>
+            <p>Grand Treasurer</p>
+          </div>
+          <a href="#" class="btn mt-2 w-100">VIEW ALL OFFICERS</a>
+        </div>
+      </div>
+      
+      <!-- Registration & Forms -->
+      <div class="card">
+        <h3 class="text-center mb-2">Registration & Forms</h3>
+        <div class="card-body">
+          <ul class="mb-2">
+            <li><a href="#" class="d-block mb-1">Grand Assembly Registration Packet (PDF)</a></li>
+            <li><a href="#" class="d-block mb-1">Delegate Credentials Form (PDF)</a></li>
+            <li><a href="#" class="d-block mb-1">Chaperone Registration Form (PDF)</a></li>
+            <li><a href="#" class="d-block mb-1">Workshop Selection Form (PDF)</a></li>
+          </ul>
+          <p class="text-center"><small>All forms are required for participation.</small></p>
+        </div>
+      </div>
+      
+      <!-- Session Materials -->
+      <div class="card">
+        <h3 class="text-center mb-2">Session Materials</h3>
+        <div class="card-body">
+          <ul class="mb-2">
+            <li><a href="#" class="d-block mb-1">Session 1: Leadership Foundations (PDF)</a></li>
+            <li><a href="#" class="d-block mb-1">Session 2: Service Planning (PDF)</a></li>
+            <li><a href="#" class="d-block mb-1">Session 3: Sisterhood & Bonding (PDF)</a></li>
+            <li><a href="#" class="d-block mb-1">Session 4: Ritual & Tradition (PDF)</a></li>
+            <li><a href="#" class="d-block mb-1">Bylaws & Parliamentary Guide (PDF)</a></li>
+          </ul>
+          <p class="text-center"><small>Materials are updated annually.</small></p>
+        </div>
+      </div>
+      
+      <!-- Achievements & Awards -->
+      <div class="card">
+        <h3 class="text-center mb-2">Achievements & Awards</h3>
+        <div class="card-body">
+          <div class="mb-2">
+            <strong>Grand Cross of Color (2026)</strong><br>
+            <p>Awarded to Olivia Brown for outstanding service and leadership.</p>
+          </div>
+          <div class="mb-2">
+            <strong>Ruby Award (2026)</strong><br>
+            <p>Awarded to the Newark Assembly for largest service project increase.</p>
+          </div>
+          <div class="mb-2">
+            <strong>Service to Humanity Award (2025)</strong><br>
+            <p>Awarded to Sophia Lee for 500+ service hours.</p>
+          </div>
+          <a href="#" class="btn mt-2 w-100">VIEW HISTORY OF AWARDS</a>
+        </div>
+      </div>
+      
+      <!-- Message Board -->
+      <div class="card">
+        <h3 class="text-center mb-2">Message Board</h3>
+        <div class="card-body">
+          <ul class="mb-2">
+            <li>
+              <strong>Important: Dress Code Update for 2027</strong><br>
+              <small>Posted: Sept 10, 2026</small><br>
+              <p class="mb-1">Please review the updated dress code guidelines for all convention events.</p>
+            </li>
+            <li>
+              <strong>Volunteers Needed: Registration Team</strong><br>
+              <small>Posted: Sept 5, 2026</small><br>
+              <p class="mb-1">We are seeking sisters to assist with registration on Friday evening.</p>
+            </li>
+            <li>
+              <strong>Reminder: Hotel Booking Deadline</strong><br>
+              <small>Posted: Aug 25, 2026</small><br>
+              <p class="mb-1">Room blocks expire on October 1st. Book now to secure the group rate.</p>
+            </li>
+          </ul>
+          <a href="#" class="btn mt-2 w-100">VIEW ALL ANNOUNCEMENTS</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div>
+      <div class="footer-logo">🌈 NJ Rainbow Girls</div>
+      <p>Stay informed and prepared for our state conventions.</p>
+    </div>
+    <nav>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="assemblies.html">Assemblies</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="member-portal.html">Members</a></li>
+      </ul>
+    </nav>
+    <div>
+      <p>&copy; 2026 New Jersey International Order of the Rainbow for Girls. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
